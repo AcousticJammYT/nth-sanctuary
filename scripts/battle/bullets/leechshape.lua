@@ -41,7 +41,7 @@ function LeechShape:init(x, y)
 
     self.tracking_val = 16
 
-    self.updateimageangle = false
+    self.updateimageangle = true
 
     self.true_timer = 0
 
@@ -55,7 +55,7 @@ function LeechShape:init(x, y)
 
 
     self.light_recover = 0.01
-    self.light_rate = 0.05
+    self.light_rate = 0.03
     self.speedfactor = 1
 
     self.ypush = 0
@@ -138,12 +138,8 @@ function LeechShape:update()
         self.alpha = Utils.approach(self.alpha, 1, 0.025)
 
         if self.alpha == 1 then
-			
-			if self.move_mode == 1 then
-			else
-				self.physics.direction = Utils.angle(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y)
-			end
         end
+		self.physics.direction = Utils.angle(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y)
     end
 
 
@@ -212,11 +208,7 @@ function LeechShape:update()
 
             self.x = self.x + self:lengthdir_x(eff_speed * 1, self.physics.direction);
             self.y = self.y + self:lengthdir_y(eff_speed * 1, self.physics.direction);
-
-            if self.updateimageangle then
-                self.rotation = self.physics.direction
-            end
-
+			
             local turning_mult = 0.5 - (math.sin(self.true_timer * 0.15) * 0.5)
             local anglediff = Utils.angleDiff(self.physics.direction, Utils.angle(self.x, self.y, hx, hy))
             local turn = Utils.clamp(Utils.sign(anglediff) * self.tracking_val * turning_mult, -math.abs(anglediff),
@@ -226,7 +218,9 @@ function LeechShape:update()
         end
     end
 
-	self.rotation = self.physics.direction
+    if self.updateimageangle then
+        self.rotation = self.physics.direction
+    end
 
     if self.shakeme then
         self.xoff = Utils.pick { -1, 0, 1 }
@@ -293,7 +287,9 @@ function LeechShape:onDamage(soul)
         local battlers = Game.battle:hurt(damage, false, target, self:shouldSwoon(damage, target, soul))
         soul.inv_timer = self.inv_timer
         soul:onDamage(self, damage)
-        self.attacker:heal(damage)
+		local bullet = self.wave:spawnBullet("leechblob", self.x, self.y)
+		bullet.attacker = self.attacker
+		bullet.damage = self:getDamage()
         return battlers
     end
     return {}

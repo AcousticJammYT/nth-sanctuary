@@ -61,11 +61,11 @@ function Dummy:init()
     self.low_health_text = "* Guei's flames flicker weakly."
 
     -- Register act called "Smile"
-    self:getAct("Check").description = "Usless\nanalysis"
-    self:registerAct("Exercism", "20% %\nDelayed\nTIRED")
+    self:getAct("Check").description = "Useless\nanalysis"
+    self:registerAct("Exercism", "20% &\nDelayed\nTIRED")
     -- Register party act with Ralsei called "Tell Story"
     -- (second argument is description, usually empty)
-    self:registerAct("Xercism", "60% %\nDelayed\nTIRED", {"ralsei"})
+    self:registerAct("Xercism", "60% &\nDelayed\nTIRED", {"ralsei"})
 end
 
 function Dummy:selectWave()
