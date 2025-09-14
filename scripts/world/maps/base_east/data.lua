@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 10,
-  nextobjectid = 36,
+  nextobjectid = 40,
   properties = {
     ["border"] = "base_sanctum",
     ["music"] = "homebase"
@@ -392,6 +392,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 39,
+          name = "targ",
+          type = "",
+          shape = "point",
+          x = 750,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -479,28 +492,6 @@ return {
           }
         },
         {
-          id = 26,
-          name = "prophecy",
-          type = "",
-          shape = "rectangle",
-          x = 600,
-          y = 380,
-          width = 280,
-          height = 120,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["offx"] = -40,
-            ["offy"] = -170,
-            ["spr_offx"] = 18,
-            ["spr_offy"] = 0,
-            ["text"] = "THE HEROES FIND THE DEOXYNN.\nTHE DEOXYNN, WHO LIES ON COLD GROUND.",
-            ["texture"] = "jamm",
-            ["txt_offx"] = -80,
-            ["txt_offy"] = 30
-          }
-        },
-        {
           id = 27,
           name = "transition",
           type = "",
@@ -545,7 +536,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "verydarkplace",
+            ["map"] = "base_east2",
             ["marker"] = "entry"
           }
         },
@@ -562,6 +553,46 @@ return {
           visible = true,
           properties = {
             ["prophecy"] = true
+          }
+        },
+        {
+          id = 36,
+          name = "prophecy",
+          type = "",
+          shape = "rectangle",
+          x = 600,
+          y = 400,
+          width = 280,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["offx"] = -40,
+            ["offy"] = -170,
+            ["spr_offx"] = 18,
+            ["spr_offy"] = 0,
+            ["text"] = "THE HEROES FIND THE DEOXYNN.\nTHE DEOXYNN, WHO LIES ON COLD GROUND.",
+            ["texture"] = "jamm",
+            ["txt_offx"] = -80,
+            ["txt_offy"] = 30
+          }
+        },
+        {
+          id = 38,
+          name = "cameratarget",
+          type = "",
+          shape = "rectangle",
+          x = 600,
+          y = 400,
+          width = 280,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["lockx"] = true,
+            ["locky"] = true,
+            ["marker"] = "targ",
+            ["time"] = 1
           }
         }
       }

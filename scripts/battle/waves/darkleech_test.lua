@@ -1,8 +1,24 @@
 local LeechTest, super = Class(Wave)
 function LeechTest:init()
     super.init(self)
-    self.time = 15
+    self.time = 9999999
     self.difficulty = Game.battle.encounter.difficulty or 3
+    --self:setArenaSize(200)
+    self.siner = 0
+    self.arenaShape = {}
+    for i = 1,360, 60 do
+        local x, y = 100*math.sin(math.rad(i)), 100* math.cos(math.rad(i))
+        if x < 0.001 and x > -0.001 then
+            x=0
+        end
+        if y < 0.001 and y > -0.001 then
+            y=0
+        end
+        
+        table.insert(self.arenaShape, {x, y})
+    end
+    self:setArenaShape(unpack(self.arenaShape))
+    self.spinfactor = 4
 end
 
 function LeechTest:lengthdir_x(len, dir)
@@ -58,17 +74,21 @@ end
 function LeechTest:getEnemyRatio()
     local enemies = #Game.battle:getActiveEnemies()
     if enemies <= 1 then
-        return 4 / 3
+        return 1/2
     elseif enemies == 2 then
-        return 7 / 3
+        return 0.75
     elseif enemies >= 3 then
-        return 15 / 3
+        return 1
     end
 end
 
 function LeechTest:update()
     -- Code here gets called every frame
-
+    self.siner = self.siner + DTMULT
+    Game.battle.arena.rotation = Game.battle.arena.rotation + math.rad(math.sin(self.siner/100)*self.spinfactor)
+    if self.spinfactor < 0 then
+        self.time = 0
+    end
     super.update(self)
 end
 

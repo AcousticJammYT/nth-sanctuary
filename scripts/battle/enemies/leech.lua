@@ -50,7 +50,7 @@ function LeechSpawn:init()
 	
     self.t_siner = 0
 	
-    self.tired_percentage = -1
+    self.tired_percentage = -1000
     self.can_freeze = false
 end
 

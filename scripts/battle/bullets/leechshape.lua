@@ -48,7 +48,7 @@ function LeechShape:init(x, y)
     self.speed_calc = 1
 
     self.acc = 4
-    self.max_speed = 2.25
+    self.max_speed = 1.5
     self.speed_max_multiplier = 1;
 
     self.accel = 0.15
@@ -86,11 +86,11 @@ function LeechShape:init(x, y)
 end
 
 function LeechShape:lengthdir_x(len, dir)
-    return len * math.cos(dir)
+    return len * math.cos(dir)/2
 end
 
 function LeechShape:lengthdir_y(len, dir)
-    return len * math.sin(dir)
+    return len * math.sin(dir)/2
 end
 
 function LeechShape:onAdd()
@@ -102,6 +102,7 @@ function LeechShape:update()
         local bullet = self.wave:spawnBullet("GreenBlob", self.x, self.y)
         bullet.tension_amount = self.tension_amount
         self:remove()
+        self.wave.spinfactor =  self.wave.spinfactor - 0.2
     elseif self.light > 0.99 then
         self.image = 6
     elseif self.light > 0.8 then

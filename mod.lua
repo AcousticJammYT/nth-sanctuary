@@ -7,6 +7,8 @@ end
 
 function Mod:postInit(new_file)
     if new_file then
+        Game:setFlag("fun", love.math.random(1, 170))
+        Game:setFlag("shards", 1)
         Game.world:startCutscene("primary.intro")
     end
 end

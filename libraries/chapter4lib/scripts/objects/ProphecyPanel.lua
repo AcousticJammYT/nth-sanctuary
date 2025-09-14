@@ -80,7 +80,7 @@ function ProphecyPanel:draw()
 
     local back_canvas = Draw.pushCanvas(self.width, self.height)
 	local ogbg = Utils.hexToRgb("#A3F8FF")
-	ogbg = COLORS["black"]
+	ogbg = {COLORS["black"]}
 	local linecol = Utils.mergeColor(Utils.hexToRgb("#8BE9EF"), Utils.hexToRgb("#17EDFF"), 0.5 + (math.sin(self.siner / 120) * 0.5))
 	local gradalpha = 1
 	Draw.setColor(ogbg, gradalpha*0.5)
