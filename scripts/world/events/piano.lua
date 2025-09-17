@@ -3,6 +3,8 @@ local ChurchPiano, super = Class(Event, "piano")
 function ChurchPiano:init(data)
     super.init(self, data)
 	
+    local properties = data.properties or {}
+	
 	self.draw_children_above = 1
 	self.solid = true
 	self.leader_x = data.center_x
@@ -24,8 +26,9 @@ function ChurchPiano:init(data)
 	self.dontdrawmenu = false
 	self.drawalpha = 0
 	self.memvolume = -1
-	progress = ""
-	solution = "777335"
+	self.progress = {}
+	self.solution = properties["solution"] or "777335"
+	self.solution_nums = {}
 	self.arrowspr = "ui/arrow_10x10"
 	self.circlespr = "ui/circle_7x7"
 	self.drawunits = {}
@@ -43,6 +46,12 @@ function ChurchPiano:onAdd(parent)
 		local tuttext = PianoTutorialText(1, self)
 		Game.world:addChild(tuttext)
 	end
+    local i = 1
+    while i <= Utils.len(self.solution) do
+        local solution_num = tonumber(Utils.sub(self.solution, i, i))
+		table.insert(self.solution_nums, solution_num)
+        i = i + 1
+    end
 end
 
 local function scr_returnwait(x1, y1, x2, y2, spd)
@@ -72,7 +81,7 @@ local function scr_piano_determinepitch(sound)
 end
 
 function ChurchPiano:onInteract(player, dir)
-	if self.con == 0 then
+	if self.con == 0 and self.buffer <= 0 then
 		if Game.stage:getObjects(PianoTutorialText)[1] then
 			Game.stage:getObjects(PianoTutorialText)[1].target = self
 		end
@@ -157,6 +166,10 @@ end
 
 function ChurchPiano:update()
 	super.update(self)
+	if self.buffer > 0 then
+		self.buffer = self.buffer - 1 * DTMULT
+	end
+	
 	if self.resetlight then
 		self.resetlight = false
 	end
@@ -247,22 +260,46 @@ function ChurchPiano:update()
 				self.soundtoplay = 8
 			end
 		end
-		local soundplayed = 0
+		local soundplayed = false
 		if Input.pressed("confirm") and self.soundtoplay ~= -1 and not Input.down("cancel") then
 			local mypitch = scr_piano_determinepitch(self.soundtoplay)
 			Assets.playSound(self.instrument, 0.7, mypitch)
-			soundplayed = 1
+			soundplayed = true
 			self.notesplayed = true
 			self.buffer = 0
 		end
 		
 		if soundplayed then
-		
+			table.insert(self.progress, self.soundtoplay)
+			if #self.progress > #self.solution_nums then
+				table.remove(self.progress, 1)
+			end
+			
+			if Utils.equal(self.progress, self.solution_nums) then
+				self.con = 30
+				self.timer = 0
+				self.solplayed = 1
+				Game.world.timer:after(1/30, function()
+					Assets.playSound("noise")
+				end)
+				Game.world.timer:after(30/30, function()
+					Game.world.timer:script(function(wait)
+						while self.solplayed < #self.solution_nums+1 do
+							local mypitch = scr_piano_determinepitch(self.solution_nums[self.solplayed])
+							Assets.playSound(self.instrument, 1, mypitch)
+							self.solplayed = self.solplayed + 1
+							wait(11/60)
+						end
+						wait(10/30)
+						self.solved = true
+						self.con = 1
+					end)
+				end)
+			end
 		end
 	end
 	
 	if self.con == 30 then
-		
 	end
 	
 	if self.con == 4 then

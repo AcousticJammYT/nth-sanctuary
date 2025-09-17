@@ -9,8 +9,8 @@ return {
   height = 12,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 6,
-  nextobjectid = 5,
+  nextlayerid = 7,
+  nextobjectid = 11,
   properties = {
     ["music"] = "smallpiano_room"
   },
@@ -96,7 +96,83 @@ return {
           x = 280,
           y = 160,
           width = 90,
+          height = 30,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["solution"] = "131315"
+          }
+        },
+        {
+          id = 9,
+          name = "pianohint",
+          type = "",
+          shape = "rectangle",
+          x = 100,
+          y = 80,
+          width = 120,
           height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["hint"] = "131",
+            ["staff"] = "start"
+          }
+        },
+        {
+          id = 10,
+          name = "pianohint",
+          type = "",
+          shape = "rectangle",
+          x = 420,
+          y = 80,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["hint"] = "315",
+            ["staff"] = "end"
+          }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 6,
+      name = "collision",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 7,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 240,
+          y = 160,
+          width = 40,
+          height = 30,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 8,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 370,
+          y = 160,
+          width = 30,
+          height = 30,
           rotation = 0,
           visible = true,
           properties = {}
