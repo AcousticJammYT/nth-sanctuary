@@ -111,8 +111,11 @@ function ProphecyPanel:draw()
 		love.graphics.setShader(last_shader)
 	end
 	love.graphics.setBlendMode("alpha", "alphamultiply")
-    love.graphics.setBlendMode("add")
 	Draw.setColor(self.panel_alpha,self.panel_alpha,self.panel_alpha)
+	if self.fade_edges then
+		Draw.draw(sprite_canvas, self.sprite_offset_x, self.sprite_offset_y, 0, 1, 1)
+	end
+    love.graphics.setBlendMode("add")
 	Draw.draw(sprite_canvas, self.sprite_offset_x, self.sprite_offset_y, 0, 1, 1)
 	Draw.draw(sprite_canvas, self.sprite_offset_x, self.sprite_offset_y, 0, 1, 1)
 	Draw.draw(sprite_canvas, self.sprite_offset_x, self.sprite_offset_y, 0, 1, 1)
