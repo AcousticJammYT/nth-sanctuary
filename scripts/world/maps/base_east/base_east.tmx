@@ -395,7 +395,7 @@ THE DEOXYNN, WHO LIES ON COLD GROUND.</property>
     <property name="light_type" type="int" value="1"/>
    </properties>
   </object>
-  <object id="73" name="lightbeamfx" x="20" y="30">
+  <object id="73" name="lightbeamfx" x="0" y="0">
    <point/>
   </object>
  </objectgroup>
