@@ -40,7 +40,7 @@
   <object id="62" gid="633" x="290" y="-570" width="640" height="1600"/>
  </objectgroup>
  <objectgroup id="13" name="objects_parallax_fade">
-  <object id="59" gid="637" x="1200" y="1140" width="900" height="1200" rotation="270"/>
+  <object id="59" gid="637" x="1200" y="900" width="900" height="1200" rotation="270"/>
  </objectgroup>
  <layer id="11" name="roomglow_dark_bg" width="26" height="18" visible="0">
   <data encoding="csv">
