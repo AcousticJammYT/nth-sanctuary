@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 19,
-  nextobjectid = 72,
+  nextobjectid = 74,
   properties = {
     ["border"] = "base_sanctum",
     ["music"] = "homebase"
@@ -1048,6 +1048,19 @@ return {
             ["light_dust"] = true,
             ["light_type"] = 1
           }
+        },
+        {
+          id = 73,
+          name = "lightbeamfx",
+          type = "",
+          shape = "point",
+          x = 20,
+          y = 30,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },

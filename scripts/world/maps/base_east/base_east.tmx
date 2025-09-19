@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="26" height="21" tilewidth="40" tileheight="40" infinite="0" nextlayerid="19" nextobjectid="72">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="26" height="21" tilewidth="40" tileheight="40" infinite="0" nextlayerid="19" nextobjectid="74">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -394,6 +394,9 @@ THE DEOXYNN, WHO LIES ON COLD GROUND.</property>
     <property name="light_dust" type="bool" value="true"/>
     <property name="light_type" type="int" value="1"/>
    </properties>
+  </object>
+  <object id="73" name="lightbeamfx" x="20" y="30">
+   <point/>
   </object>
  </objectgroup>
  <objectgroup id="7" name="objects_overlay">
