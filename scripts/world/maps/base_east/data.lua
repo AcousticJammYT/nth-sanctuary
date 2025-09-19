@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 19,
-  nextobjectid = 63,
+  nextobjectid = 66,
   properties = {
     ["border"] = "base_sanctum",
     ["music"] = "homebase"
@@ -1046,6 +1046,49 @@ return {
             ["light_color"] = "#ffffffff",
             ["light_type"] = 1
           }
+        },
+        {
+          id = 63,
+          name = "texturescroller",
+          type = "",
+          shape = "point",
+          x = -50,
+          y = -60,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["type"] = "hsv"
+          }
+        },
+        {
+          id = 64,
+          name = "filter",
+          type = "",
+          shape = "point",
+          x = -130,
+          y = 100.001,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["type"] = "hsv2"
+          }
+        },
+        {
+          id = 65,
+          name = "churchfog",
+          type = "",
+          shape = "point",
+          x = -90,
+          y = 180,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
