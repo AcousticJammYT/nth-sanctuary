@@ -54,7 +54,7 @@ return {
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      parallaxx = 1,
+      parallaxx = 0.6,
       parallaxy = 1,
       properties = {},
       encoding = "lua",

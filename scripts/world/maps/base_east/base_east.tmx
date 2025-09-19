@@ -11,7 +11,7 @@
  <tileset firstgid="583" source="../../tilesets/castle.tsx"/>
  <tileset firstgid="623" source="../../tilesets/light_areas.tsx"/>
  <tileset firstgid="629" source="../../tilesets/church_objects.tsx"/>
- <layer id="14" name="tiles_parallax" width="26" height="18">
+ <layer id="14" name="tiles_parallax" width="26" height="18" parallaxx="0.6">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,49,0,0,49,0,0,49,0,0,49,0,0,49,0,0,49,0,0,49,0,0,49,0,0,
