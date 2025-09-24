@@ -11,7 +11,9 @@ return {
   tileheight = 40,
   nextlayerid = 8,
   nextobjectid = 22,
-  properties = {},
+  properties = {
+    ["music"] = "bell_ambience"
+  },
   tilesets = {
     {
       name = "church_objects",
@@ -155,7 +157,7 @@ return {
       type = "objectgroup",
       draworder = "topdown",
       id = 7,
-      name = "objects2",
+      name = "objects_piano",
       class = "",
       visible = true,
       opacity = 1,
@@ -177,7 +179,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["solution"] = "{15, 15, 5, 2}"
+            ["resetmus"] = true,
+            ["solution"] = "aaa"
           }
         }
       }

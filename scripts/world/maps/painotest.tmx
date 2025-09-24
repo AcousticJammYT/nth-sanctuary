@@ -7,16 +7,16 @@
   <property name="music" value="smallpiano_room"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/church_objects.tsx"/>
- <tileset firstgid="11" source="../tilesets/bg_dw_church_2_tileset.tsx"/>
+ <tileset firstgid="10" source="../tilesets/bg_dw_church_2_tileset.tsx"/>
  <layer id="5" name="tiles" width="16" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
-0,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
-0,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
-0,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
+0,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,
+0,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,
+0,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,
+0,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -29,6 +29,7 @@
   <object id="4" name="piano" x="160" y="120" width="90" height="30">
    <properties>
     <property name="cutscene" value="piano.door"/>
+    <property name="destroyhints" type="bool" value="false"/>
     <property name="solution" value="000111333111"/>
    </properties>
   </object>

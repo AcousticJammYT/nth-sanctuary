@@ -3,6 +3,9 @@
  <editorsettings>
   <export target="big_painotest.lua" format="lua"/>
  </editorsettings>
+ <properties>
+  <property name="music" value="bell_ambience"/>
+ </properties>
  <tileset firstgid="1" source="../tilesets/church_objects.tsx"/>
  <tileset firstgid="11" source="../tilesets/bg_dw_church_tileset_new.tsx"/>
  <layer id="1" name="Tile Layer 1" width="30" height="20">
@@ -57,10 +60,11 @@
  <objectgroup id="2" name="objects">
   <object id="14" gid="10" x="320" y="560" width="322" height="382"/>
  </objectgroup>
- <objectgroup id="7" name="objects2">
+ <objectgroup id="7" name="objects_piano">
   <object id="15" name="pianobig" x="380" y="420" width="200" height="20">
    <properties>
-    <property name="solution" value="{15, 15, 5, 2}"/>
+    <property name="resetmus" type="bool" value="true"/>
+    <property name="solution" value="aaa"/>
    </properties>
   </object>
  </objectgroup>

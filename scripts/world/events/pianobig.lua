@@ -24,44 +24,30 @@ function BigChurchPiano:init(data)
 	self.canceltime = 15
 	self.drawspace = 30
 	self.engaged = false
+	self.engaged_alpha = 0
 	self.siner = 0
 	self.dontdrawmenu = false
 	self.drawalpha = 0
 	self.memvolume = -1
-	self.progress = {}
-	self.solution = properties["solution"] or "777335"
-	self.solution_nums = {}
+	self.endlessplaylog = ""
+	self.solution = properties["solution"] or "aoamcdbaaoaebcdeeeeeacbnaaocdeeeeefghgfecaoamcdbaklji"
 	self.oct = false
-	self.arrowspr = "ui/organ_dir"
-	self.diag = "ui/organ_diag"
-	self.circlespr = "ui/organ_circ"
-	self.shift = "ui/organ_sh"
-	self.drawunits = {}
 	self.cutscene = properties["cutscene"] or nil
-	table.insert(self.drawunits, {sound = 0, x = -270, y = -90, offx = 8, offy = 5, rot = math.rad(0), tex = self.circlespr})
-	table.insert(self.drawunits, {sound = 1, x = -200, y = -85, offx = 10, offy = 15, rot = math.rad(-90), tex = self.arrowspr})
-	table.insert(self.drawunits, {sound = 2, x = -170, y = -85, offx = 5, offy = 10, rot = math.rad(0), tex = self.diag})
-	table.insert(self.drawunits, {sound = 3, x = -140, y = -85, offx = -10, offy = 10, rot = math.rad(0), tex = self.arrowspr})
-	table.insert(self.drawunits, {sound = 4, x = -40, y = -85, offx = 10, offy = 10, rot = math.rad(90), tex = self.diag})
-	table.insert(self.drawunits, {sound = 5, x = 10, y = -85, offx = 10, offy = 12, rot = math.rad(-270), tex = self.arrowspr})
-	table.insert(self.drawunits, {sound = 6, x = 70, y = -85, offx = 10, offy = 10, rot = math.rad(-180), tex = self.diag})
-	table.insert(self.drawunits, {sound = 7, x = 140, y = -85, offx = 0, offy = 10, rot = math.rad(180), tex = self.arrowspr})
-	table.insert(self.drawunits, {sound = 9, x = 220, y = -100, offx = 0, offy = 0, rot = math.rad(0), tex = self.shift})
-	
+	self.notedisplay = nil
+	self.makenote = false
+	self.reset_music = properties["resetmus"] ~= false
 end
 
 function BigChurchPiano:onAdd(parent)
     super.onAdd(self,parent)
-    if not Game.stage:getObjects(PianoTutorialText)[1] then
-		local tuttext = PianoTutorialText(1, self)
+    if not Game.stage:getObjects(TutorialText)[1] then
+		local tuttext = TutorialText(2, self)
 		Game.world:addChild(tuttext)
 	end
-    local i = 1
-    while i <= Utils.len(self.solution) do
-        local solution_num = tonumber(Utils.sub(self.solution, i, i))
-		table.insert(self.solution_nums, solution_num)
-        i = i + 1
-    end
+    if not Game.stage:getObjects(OrganNoteDisplay)[1] then
+		self.notedisplay = OrganNoteDisplay(self)
+		Game.world:addChild(self.notedisplay)
+	end
 end
 
 local function scr_returnwait(x1, y1, x2, y2, spd)
@@ -70,54 +56,84 @@ end
 
 local function scr_piano_determinepitch(sound)
 	local a = 0
+	local passentry = ""
 	if sound == 0 then
-		a = 1
-	elseif sound == 1 then
-		a = 1.125
-	elseif sound == 2 then
-		a = 1.25
-	elseif sound == 3 then
-		a = 1.33
-	elseif sound == 4 then
-		a = 1.5
+		if not Input.down("menu") then
+			a = 1
+			passentry = "a"
+		else
+			a = 0.5
+			passentry = "i"
+		end
 	elseif sound == 5 then
-		a = 1.66
-	elseif sound == 6 then
-		a = 1.875
-	elseif sound == 7 then
-		a = 2
+		if not Input.down("menu") then
+			a = 1.125
+			passentry = "b"
+		else
+			a = 0.5625
+			passentry = "j"
+		end
+	elseif sound == 4 then
+		if not Input.down("menu") then
+			a = 1.25
+			passentry = "c"
+		else
+			a = 0.625
+			passentry = "k"
+		end
+	elseif sound == 3 then
+		if not Input.down("menu") then
+			a = 4/3
+			passentry = "d"
+		else
+			a = 2/3
+			passentry = "l"
+		end
+	elseif sound == 2 then
+		if not Input.down("menu") then
+			a = 1.5
+			passentry = "e"
+		else
+			a = 0.75
+			passentry = "m"
+		end
+	elseif sound == 1 then
+		if not Input.down("menu") then
+			a = 1.6666666666666667
+			passentry = "f"
+		else
+			a = 0.8333333333333334
+			passentry = "n"
+		end
 	elseif sound == 8 then
-		a = 2
-	elseif sound == 10 then
-		a = 1/2
-	elseif sound == 11 then
-		a = 1.125/2
-	elseif sound == 12 then
-		a = 1.25/2
-	elseif sound == 13 then
-		a = 1.33/2
-	elseif sound == 14 then
-		a = 1.5/2
-	elseif sound == 15 then
-		a = 1.66/2
-	elseif sound == 16 then
-		a = 1.875/2
-	elseif sound == 17 then
-		a = 2/2
-	elseif sound == 18 then
-		a = 2/2
+		if not Input.down("menu") then
+			a = 1.875
+			passentry = "g"
+		else
+			a = 0.9375
+			passentry = "o"
+		end
+	elseif sound == 7 then
+		if not Input.down("menu") then
+			a = 2
+			passentry = "h"
+		else
+			a = 1
+			passentry = "a"
+		end
 	end
-	return a
+	return a, passentry
 end
 
 function BigChurchPiano:onInteract(player, dir)
 	if self.con == 0 and self.buffer <= 0 then
-		if Game.stage:getObjects(PianoTutorialText)[1] then
-			Game.stage:getObjects(PianoTutorialText)[1].target = self
+		self.endlessplaylog = ""
+		if Game.stage:getObjects(TutorialText)[1] then
+			Game.stage:getObjects(TutorialText)[1].target = self
 		end
 		if Game.world.music then
-			self.memvolume = Game.world.music.volume
-			Game.world.music:fade(self.memvolume * 0.125, 15/30)
+			self.memvolume = 1
+			Game.world.music:fade(0, 30/30)
 		end
 		local cutscene = self.world:startCutscene(function(cutscene)
 			cutscene:detachCamera()
@@ -225,7 +241,10 @@ function BigChurchPiano:update()
 			end]]
 			if skipcamreset == 0 then
 				if Game.world.music and self.memvolume ~= -1 then
-					Game.world.music:fade(self.memvolume, 15/30)
+					if self.reset_music then
+						Game.world.music:seek(0)
+					end
+					Game.world.music:fade(self.memvolume, 120/30)
 				end
 				local tx, ty = Game.world.camera:getTargetPosition()
 				Game.world.camera:panTo(tx, ty, 4/30, "linear", function() Game.world:setCameraAttached(true) end)
@@ -233,7 +252,10 @@ function BigChurchPiano:update()
 			else
 				if skipcamreset == 2 then
 					if Game.world.music and self.memvolume ~= -1 then
-						Game.world.music:fade(self.memvolume, 5/30)
+						if self.reset_music then
+							Game.world.music:seek(0)
+						end
+						Game.world.music:fade(self.memvolume, 120/30)
 					end
 					local tx, ty = Game.world.camera:getTargetPosition()
 					Game.world:setCameraAttached(true)
@@ -243,124 +265,51 @@ function BigChurchPiano:update()
 			end
 		end
 		
-		self.soundtoplay = -1
-		if self.difficulty == 0 then
-			if not Input.down("left") and not Input.down("down") and not Input.down("right") and not Input.down("up") then
-				self.soundtoplay = 0
-			end
-			if Input.down("left") then
-				self.soundtoplay = 1
-			end
-			if Input.down("down") then
-				self.soundtoplay = 3
-			end
-			if Input.down("right") then
-				self.soundtoplay = 1
-			end
-			if Input.down("up") then
-				self.soundtoplay = 7
-			end
+		self.soundtoplay = 0
+		if Input.down("left") and not Input.down("down") and not Input.down("right") and not Input.down("up") then
+			self.soundtoplay = 1
 		end
-		if self.difficulty == 1 then
-			if not Input.down("left") and not Input.down("down") and not Input.down("right") and not Input.down("up") then
-				self.soundtoplay = 0
-				if self.oct then
-					self.soundtoplay = 10
-				end
-			end
-			if Input.down("left") and not Input.down("down") and not Input.down("right") and not Input.down("up") then
-				self.soundtoplay = 5
-				if self.oct then
-					self.soundtoplay = 15
-				end
-			end
-			if Input.down("left") and Input.down("down") and not Input.down("right") and not Input.down("up") then
-				self.soundtoplay = 4
-				if self.oct then
-					self.soundtoplay = 14
-				end
-			end
-			if Input.down("down") and not Input.down("left") and not Input.down("right") and not Input.down("up") then
-				self.soundtoplay = 3
-				if self.oct then
-					self.soundtoplay = 13
-				end
-			end
-			if Input.down("down") and Input.down("right") and not Input.down("left") and not Input.down("up") then
-				self.soundtoplay = 2
-				if self.oct then
-					self.soundtoplay = 12
-				end
-			end
-			if Input.down("right") and not Input.down("left") and not Input.down("down") and not Input.down("up")  then
-				self.soundtoplay = 1
-				if self.oct then
-					self.soundtoplay = 11
-				end
-			end
-			if Input.down("up") and not Input.down("down") and not Input.down("right") and not Input.down("left") then
-				self.soundtoplay = 7
-				if self.oct then
-					self.soundtoplay = 17
-				end
-			end
-			if Input.down("up") and Input.down("left") and not Input.down("down") and not Input.down("right") then
-				self.soundtoplay = 6
-				if self.oct then
-					self.soundtoplay = 16
-				end
-			end
+		if Input.down("left") and Input.down("down") and not Input.down("up") and not Input.down("right") then
+			self.soundtoplay = 2
+		end
+		if Input.down("down") and not Input.down("left") and not Input.down("right") and not Input.down("up") then
+			self.soundtoplay = 3
+		end
+		if Input.down("down") and Input.down("right") and not Input.down("left") and not Input.down("up") then
+			self.soundtoplay = 4
+		end
+		if Input.down("right") and not Input.down("left") and not Input.down("down") and not Input.down("up") then
+			self.soundtoplay = 5
+		end
+		if Input.down("up") and Input.down("right") and not Input.down("down") and not Input.down("left") then
+			self.soundtoplay = 7
+		end
+		if Input.down("up") and not Input.down("left") and not Input.down("down") and not Input.down("right") then
+			self.soundtoplay = 7
+		end
+		if Input.down("up") and Input.down("left") and not Input.down("down") and not Input.down("right") then
+			self.soundtoplay = 8
 		end
 		local soundplayed = false
 		if Input.pressed("confirm") and self.soundtoplay ~= -1 and not Input.down("cancel") then
-			local mypitch = scr_piano_determinepitch(self.soundtoplay)
-			Assets.playSound(self.instrument, 0.7, mypitch)
+			local mypitch, passkey = scr_piano_determinepitch(self.soundtoplay)
+			Assets.playSound(self.instrument, 0.8, mypitch)
 			soundplayed = true
+			self.makenote = true
 			self.notesplayed = true
 			self.buffer = 0
-		end
-
-		if Input.pressed("c") then
-			if not self.oct then
-				self.oct = true
-			else
-				self.oct = false
+			self.endlessplaylog = self.endlessplaylog..passkey
+			local i = 1
+			while i <= utf8.len(self.endlessplaylog) do
+				if Utils.sub(self.endlessplaylog, i, utf8.len(self.endlessplaylog)) == self.solution then
+					Assets.playSound("bell")
+					self.endlessplaylog = ""
+					break
+				end
+				i = i + 1
 			end
-		end
-		
-		if soundplayed then
-			table.insert(self.progress, self.soundtoplay)
-			if #self.progress > #self.solution_nums then
-				table.remove(self.progress, 1)
-			end
-			
-			if Utils.equal(self.progress, self.solution_nums) then
-				self.con = 30
-				self.timer = 0
-				self.solplayed = 1
-				Game.world.timer:after(1/30, function()
-					Assets.playSound("noise")
-				end)
-				Game.world.timer:after(30/30, function()
-					Game.world.timer:script(function(wait)
-						while self.solplayed < #self.solution_nums+1 do
-							local mypitch = scr_piano_determinepitch(self.solution_nums[self.solplayed])
-							Assets.playSound(self.instrument, 1, mypitch)
-							self.solplayed = self.solplayed + 1
-							wait(11/60)
-						end
-						wait(10/30)
-						self.solved = true
-						self.con = 1
-						Game.world:startCutscene(function(cutscene)
-							if self.prop then
-								cutscene:gotoCutscene(self.prop)
-							else
-								Assets.playSound("bell")
-							end
-						end)
-					end)
-				end)
+			if Utils.len(self.endlessplaylog) >= 200 then
+				self.endlessplaylog = Utils.sub(self.endlessplaylog, 1, Utils.len(self.endlessplaylog) - 1)
 			end
 		end
 	end
@@ -385,57 +334,11 @@ function BigChurchPiano:draw()
 	self.siner = self.siner + 1 * DTMULT
 	if self.con == 1 then
 		self.engaged = true
+		self.engaged_alpha = 1
 	else
 		self.engaged = false
+		self.engaged_alpha = 0
 	end
-	
-	local alphtarg = 0
-	if self.con == 1 and not self.dontdrawmenu then
-		alphtarg = 1
-	end
-	self.drawalpha = Utils.lerp(self.drawalpha, alphtarg, 0.1*DTMULT)
-	self.drawspace = 18
-	local drawx = 0 + self.width/2
-	local drawy = 0 - 80
-	love.graphics.setColor(0,0,0,self.drawalpha*0.9)
-	love.graphics.rectangle("fill", -500, -200, 999, 75)
-	local litblue = Utils.hexToRgb("#698DE6")
-	local sinstrength = 2
-	local basealpha = 0.35
-	for i, unit in ipairs(self.drawunits) do
-		local bonusalpha = 0
-		local xloc = drawx + unit.x
-		local yloc = drawy + unit.y + (math.sin((self.siner + (i * 42)) / 9) * sinstrength)
-		if self.soundtoplay == unit.sound then
-			bonusalpha = 0.6
-			if Input.pressed("confirm") and self.con == 1 and not Input.down("cancel") then
-                local note = Sprite(unit.tex, xloc, yloc)
-				note.layer = self.layer + 1
-                note:setColor(litblue)
-				note:setScale(2, 2)
-				note:setOriginExact(unit.offx, unit.offy)
-				note.rotation = unit.rot
-                note.physics.direction = math.rad(Utils.random(360))
-                note.physics.speed = 5
-                note.physics.friction = 0.35
-				note.physics.direction = unit.rot + math.rad(90)
-				if self.soundtoplay == 0 then
-					note.physics.speed = 0
-				end
-				Game.world.timer:tween(20/30, note, {alpha = 0}, 'out-quad', function()
-					note:remove()
-				end)
-				self:addChild(note)
-			end
-		end
-		love.graphics.setColor(litblue[1], litblue[2], litblue[3], (basealpha + bonusalpha) * self.drawalpha)
-		if self.oct then
-			Draw.draw(Assets.getTexture(unit.tex.."_h"), xloc, yloc, unit.rot, 2, 2, unit.offx, unit.offy)
-		else
-			Draw.draw(Assets.getTexture(unit.tex), xloc, yloc, unit.rot, 2, 2, unit.offx, unit.offy)
-		end
-	end
-	love.graphics.setColor(1,1,1,1)
 end
 
 return BigChurchPiano
