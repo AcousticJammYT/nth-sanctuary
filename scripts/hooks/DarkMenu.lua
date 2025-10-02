@@ -53,7 +53,7 @@ function DarkMenu:init()
     self:addButtons()
     self.buttons = Kristal.callEvent(KRISTAL_EVENT.getDarkMenuButtons, self.buttons, self) or self.buttons
 
-    self.count = Game.stage:addChild(ShardCounter())
+	self.shard_sprite = Assets.getTexture("ui/menu/icon/shard")
     self.box = nil
     self.box_offset_x = 0
     self.box_offset_y = 0
@@ -154,7 +154,6 @@ function DarkMenu:onAdd(parent)
 end
 
 function DarkMenu:transitionOut()
-    self.count:transOut()
     if Game.world.menu == self then
         Game.world.menu = nil
     end
@@ -351,7 +350,10 @@ function DarkMenu:draw()
     Draw.setColor(1, 1, 1)
 
     love.graphics.setFont(self.font)
-    love.graphics.print(Game:getConfig("darkCurrencyShort") .. " " .. Game.money, 520, 20)
+    love.graphics.print(Game:getConfig("darkCurrencyShort") .. " " .. Game.money, 520, 13)
+	Draw.draw(self.shard_sprite, 520, 46, 0, 2, 2)
+	local shards = Game:getFlag("shards") or 0
+    love.graphics.print(shards, 554, 41)
 
     super.draw(self)
 end
