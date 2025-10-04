@@ -3,10 +3,10 @@ local ShardDoor, super = Class(Event, "shard_door")
 function ShardDoor:init(data)
     super.init(self, data)
     self.properties = data.properties or {}
-    self.display = Text(self.properties.req)
+    self.display = ShardDoorDisplay(self.properties.req)
     self.display.layer = 10000000
     self:addChild(self.display)
-    self.display.x = self.width/2-self.display:getTextWidth()/2
+    self.display.x = self.width/2
     self.display.y = -130
     self.siner = 0
     self.mapname = self.properties.map_name or "Placeholder"
@@ -15,7 +15,6 @@ end
 function ShardDoor:update()
     self.siner = self.siner + DTMULT
     super.update(self)
-    self.display.y  = self.display.y  + math.sin(self.siner/10)/2
 end
 
 function ShardDoor:onInteract(player, dir)
