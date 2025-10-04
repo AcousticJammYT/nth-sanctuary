@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="14" nextobjectid="40">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="14" nextobjectid="47">
  <editorsettings>
   <export target="base_sanctum_center.lua" format="lua"/>
  </editorsettings>
@@ -230,6 +230,9 @@
   <object id="38" name="targ" x="200" y="340">
    <point/>
   </object>
+  <object id="41" name="entry_up" x="600" y="40">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup id="5" name="objects_party">
   <object id="2" name="savepoint" x="680" y="400" width="40" height="40">
@@ -272,7 +275,12 @@ THE KNIGHT IS TO NO FAULT.</property>
     <property name="marker" value="entry"/>
    </properties>
   </object>
-  <object id="24" name="transition" x="560" y="-40" width="40" height="40"/>
+  <object id="24" name="transition" x="560" y="-40" width="80" height="40">
+   <properties>
+    <property name="map" value="fast_travel"/>
+    <property name="marker" value="entry_primary"/>
+   </properties>
+  </object>
   <object id="32" name="roomglow" x="40" y="40">
    <properties>
     <property name="prophecy" type="bool" value="true"/>

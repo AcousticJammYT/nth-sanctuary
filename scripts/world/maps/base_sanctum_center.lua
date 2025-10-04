@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 14,
-  nextobjectid = 40,
+  nextobjectid = 47,
   properties = {
     ["border"] = "base_sanctum",
     ["music"] = "homebase",
@@ -656,6 +656,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 41,
+          name = "entry_up",
+          type = "",
+          shape = "point",
+          x = 600,
+          y = 40,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -768,11 +781,14 @@ return {
           shape = "rectangle",
           x = 560,
           y = -40,
-          width = 40,
+          width = 80,
           height = 40,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["map"] = "fast_travel",
+            ["marker"] = "entry_primary"
+          }
         },
         {
           id = 32,

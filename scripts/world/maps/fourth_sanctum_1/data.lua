@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 18,
-  nextobjectid = 69,
+  nextobjectid = 71,
   properties = {
     ["music"] = "fourth_church",
     ["name"] = "4th Sanctuary - Entry"
@@ -34,7 +34,7 @@ return {
     },
     {
       name = "tiles_moss",
-      firstgid = 599,
+      firstgid = 601,
       filename = "../../tilesets/tiles_moss.tsx"
     }
   },
@@ -453,7 +453,7 @@ return {
           width = 40,
           height = 40,
           rotation = 0,
-          gid = 599,
+          gid = 601,
           visible = true,
           properties = {}
         }
@@ -571,6 +571,22 @@ return {
           properties = {
             ["actor"] = "lobbyman",
             ["cutscene"] = "lobbyman.four"
+          }
+        },
+        {
+          id = 70,
+          name = "worlditem",
+          type = "",
+          shape = "rectangle",
+          x = 240,
+          y = 960,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["once"] = true,
+            ["shard"] = true
           }
         }
       }
