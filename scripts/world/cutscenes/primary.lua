@@ -26,9 +26,48 @@ return {
             "Just a fair warning before proceeding.[wait:10]\n" ..
             "The Dark, [wait:5]Second, [wait:5]and Third Sanctuaries are not recreations of\nDELTARUNE Chapter 4's maps. [wait:5]\n\nI do not want to get sued.[wait:10]\n\n" ..
             "#th Sanctuary is meant to be enjoyed at your own pace.[wait:10]\nPlease, [wait:5]enjoy yourself.")
+        cutscene:wait(1)
+        local remove = {}
+        local sum = 85
+        for i = 1,9 do
+            local letter = Sprite("logo_letter_"..i)
+            letter:setScale(2)
+            letter:setParallax(0)
+            letter:setOrigin(0, 1)
+            letter.layer = 1000
+            Game.world:addChild(letter)
+            letter.x = sum
+            letter.y = SCREEN_HEIGHT/2
+            Assets.playSound("noise")
+            cutscene:wait(1/15)
+            sum = sum + (letter.width*2) + 10
+            table.insert(remove, letter)
+        end
+        cutscene:wait(1)
+        local a = Text("#th Sanctuary")
+        a.layer = 1000
+        a:setOrigin(0, 0)
+        a:setScale(2)
+                a.x, a.y = 130, 244
+        Game.stage:addChild(a)
+        Assets.playSound("bell_bounce_short")
+        cutscene:wait(2)
+        for _, sprite in ipairs(remove) do
+            sprite.physics.direction = math.rad(90)
+            sprite.physics.speed = 1
+            sprite.physics.friction = -1
+            Game.world.timer:tween(1, sprite, {rotation = math.rad(math.random(-15, 15))})
+        end
+        Game.world.timer:tween(1, a, {alpha = 0})
+        Assets.playSound("stardrop")
+
         cutscene:fadeIn(1, { music = true })
         cutscene:detachFollowers()
-        cutscene:wait(1)
+        cutscene:wait(2)
+        for _, sprite in ipairs(remove) do
+            sprite:remove()
+        end
+        a:remove()
         cutscene:setSpeaker(susie)
         Assets.playSound("whip_hard")
         susie:setSprite("exasperated_right")

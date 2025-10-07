@@ -13,6 +13,20 @@ return {
         end
     end,
 
+    moss2 = function (cutscene)
+        local get = Game:getFlag("moss2")
+        if not get then
+            Game.world.music.volume = 0
+            Assets.playSound("moss_fanfare")
+            cutscene:text("* You found the [color:9999ff]DuskMoss!")
+            Game.inventory:addItem("duskmoss")
+            Game.world.timer:tween(1, Game.world.music, {volume = 1})
+            Game:setFlag("moss2", true)
+        elseif get == true then
+            cutscene:text("* (You already got the moss.)")
+        end
+    end,
+
     shard = function(cutscene)
         cutscene:wait(2)
         local this = BurstObj(Game.world.player.x, Game.world.player.y, {0.2, 0.2, 0.2}, "darkshard")
