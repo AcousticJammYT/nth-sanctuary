@@ -94,11 +94,11 @@ function GueiActorSprite:update()
 		self.encounter.alpha = 0
 		
         self.chase1:setFrame(math.floor(self.animsiner / 6))
-		self.chase1.y = 34 + math.cos(self.animsiner / 12) * 8
+		self.chase1.y = 34 + (math.cos(self.animsiner / 12) * 8)/2
 		self.chase1.alpha = 1
         self.chase2:setFrame(math.floor((self.animsiner + 1) / 6))
-		self.chase2.x = 20 + math.sin(self.animsiner / 2) * 2
-		self.chase2.y = 34 + math.cos(self.animsiner / 12) * 8
+		self.chase2.x = 20 + (math.sin(self.animsiner / 2) * 2)/2
+		self.chase2.y = 34 + (math.cos(self.animsiner / 12) * 8)/2
 		self.chase2.alpha = 0.5
     elseif self.anim == "encounter" then
         self.animsiner = self.animsiner + (1 * DTMULT)
@@ -111,11 +111,11 @@ function GueiActorSprite:update()
 		self.arm_front.alpha = 0
 		
         self.chase1:setFrame(math.floor(self.animsiner / 6))
-		self.chase1.y = 34 + math.cos(self.animsiner / 12) * 8
+		self.chase1.y = 34 + (math.cos(self.animsiner / 12) * 8)/2
 		self.chase1.alpha = 1 - (prog * 2)
         self.chase2:setFrame(math.floor((self.animsiner + 1) / 6))
-		self.chase2.x = 20 + math.sin(self.animsiner / 2) * 2
-		self.chase2.y = 34 + math.cos(self.animsiner / 12) * 8
+		self.chase2.x = 20 + (math.sin(self.animsiner / 2) * 2)/2
+		self.chase2.y = 34 + (math.cos(self.animsiner / 12) * 8)/2
 		self.chase2.alpha = 0.5 - (prog * 2)
 		
 		self.encounter:setFrame(math.floor(self.animsiner / 4))

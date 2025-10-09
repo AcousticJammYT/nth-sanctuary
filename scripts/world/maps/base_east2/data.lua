@@ -626,7 +626,7 @@ return {
           name = "gueienemy",
           type = "",
           shape = "rectangle",
-          x = 800,
+          x = 820,
           y = 440,
           width = 40,
           height = 40,
@@ -636,11 +636,14 @@ return {
             ["actor"] = "guei",
             ["animation"] = "chase",
             ["chase"] = true,
+            ["chase_once"] = true,
             ["chaseaccel"] = 1.05,
             ["chasemax"] = 100,
             ["chasespeed"] = 1,
             ["chasetype"] = "multiplier",
-            ["encounter"] = "guei"
+            ["encounter"] = "guei",
+            ["pacetype"] = "horizontalswing",
+            ["swinglength"] = 80
           }
         },
         {

@@ -48,9 +48,9 @@ function GueiChaser:init(data)
     -- Used for multiplier acceleration to keep acceleration consistent across framerates.
     self.chase_init_speed = self.chase_speed
     -- Starting x-coordinate of the enemy for pacing types.
-    self.spawn_x = x
+    self.spawn_x = data.x
     -- Starting y-coordinate of the enemy for pacing types.
-    self.spawn_y = y
+    self.spawn_y = data.y
     self.pace_index = 1
     self.wandering = false
     self.return_to_spawn = false
@@ -61,6 +61,7 @@ function GueiChaser:init(data)
     self.remove_on_encounter = true
     self.encountered = false
     self.once = properties["once"] or false
+    self.chase_once = properties["chase_once"] or false
 
     if properties["aura"] == nil then
         self.sprite.aura = Game:getConfig("enemyAuras")
@@ -99,9 +100,11 @@ function GueiChaser:update()
                 if in_radius then
                     local sight = LineCollider(self.world, self.x, self.y, self.world.player.x, self.world.player.y)
                     if not self.world:checkCollision(sight, true) and not self.world:checkCollision(self.collider, true) then
-                        self.path = nil
-						self.chasing = true
-                        self:onAlerted()
+						if not self:getFlag("dont_chase", false) then
+							self.path = nil
+							self.chasing = true
+							self:onAlerted()
+						end
                     end
                 end
                 Object.endCache()
@@ -112,6 +115,20 @@ function GueiChaser:update()
     end
 
     super.super.update(self)
+end
+
+function GueiChaser:onEncounterEnd(primary, encounter)
+    if self.remove_on_encounter then
+        self:remove()
+    else
+        self.visible = true
+    end
+    if self.once then
+        self:setFlag("dont_load", true)
+    end
+    if self.chase_once then
+        self:setFlag("dont_chase", true)
+    end
 end
 
 function GueiChaser:onCollide(player)
