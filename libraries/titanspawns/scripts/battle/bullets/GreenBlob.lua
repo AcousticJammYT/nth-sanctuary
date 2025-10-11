@@ -32,7 +32,7 @@ function TPBlob:onAdd(parent)
     super.onAdd(self, parent)
 
 
-    Assets.playSound("snd_hurt1_bc", 1, 0.5)
+    --Assets.playSound("snd_hurt1_bc", 1, 0.5)
 
 
     self.physics.direction = Utils.angle(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y) + math.rad(180)
