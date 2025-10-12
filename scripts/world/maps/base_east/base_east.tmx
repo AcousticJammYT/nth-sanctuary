@@ -208,7 +208,7 @@
 0,0,0,529,530,530,530,530,530,530,530,530,530,530,530,531,0,0,0,0,0,0,73,73,73,0,
 0,0,0,535,571,577,571,536,571,571,274,536,571,571,274,537,0,0,0,0,0,0,73,73,73,0,
 0,0,529,536,571,274,577,536,577,571,571,536,274,571,571,536,531,0,0,0,0,0,73,73,73,0,
-0,0,535,536,577,571,577,536,274,577,571,536,571,577,571,536,537,0,0,0,0,0,73,73,73,0,
+0,0,535,536,577,571,577,536,536,536,536,536,571,577,571,536,537,0,0,0,0,0,73,73,73,0,
 0,0,541,542,73,73,73,542,542,542,542,542,73,73,73,73,73,73,73,73,73,73,73,73,73,0,
 0,0,0,0,73,73,73,0,0,0,0,0,73,73,73,73,73,73,73,73,73,73,73,73,73,0,
 0,0,0,0,73,73,73,0,0,0,0,0,73,73,73,73,73,73,73,73,73,73,73,73,73,0,
@@ -297,15 +297,15 @@
   </object>
  </objectgroup>
  <objectgroup id="5" name="objects_party">
-  <object id="3" name="climbentry" x="480" y="520" width="120" height="40">
+  <object id="3" name="climbentry" x="480" y="480" width="120" height="40">
    <properties>
     <property name="area" type="object" value="5"/>
    </properties>
   </object>
-  <object id="5" name="climbarea" x="480" y="400" width="120" height="120"/>
-  <object id="6" name="climbarea" x="320" y="400" width="120" height="120"/>
-  <object id="7" name="climbarea" x="160" y="400" width="120" height="120"/>
-  <object id="8" name="climbentry" x="160" y="520" width="120" height="40">
+  <object id="5" name="climbarea" x="480" y="400" width="120" height="80"/>
+  <object id="6" name="climbarea" x="320" y="400" width="120" height="80"/>
+  <object id="7" name="climbarea" x="160" y="400" width="120" height="80"/>
+  <object id="8" name="climbentry" x="160" y="480" width="120" height="40">
    <properties>
     <property name="area" type="object" value="7"/>
    </properties>

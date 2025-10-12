@@ -13,7 +13,8 @@ function map:onEnter()
     end
 	for _, event in ipairs(self.events) do
 		if event.layer == self.layers["objects_parallax"] then
-			 event.parallax_x = 0.8
+			 event.parallax_x = 0.5
+			 event.parallax_y = 0.9
 		end
 	end
 end
