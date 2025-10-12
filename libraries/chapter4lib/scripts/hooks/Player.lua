@@ -222,7 +222,7 @@ function Player:processClimbInputs()
 						local grabx = self.x
 						local graby = self.y
 						self.grabx = (MathUtils.round(grabx / 40) * 40) - 20
-						self.graby = (MathUtils.round(graby / 40) * 40)
+						self.graby = (MathUtils.round(graby / 40) * 40) + 2
 						self.grabontimer = 15
 						self.graboncon = 1
 						self.falling = 0
