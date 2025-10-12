@@ -161,7 +161,7 @@ return {
         },
         {
           id = 7,
-          name = "climbentry",
+          name = "climblanding",
           type = "",
           shape = "rectangle",
           x = 240,
@@ -170,9 +170,7 @@ return {
           height = 40,
           rotation = 0,
           visible = true,
-          properties = {
-            ["area"] = { id = 12 }
-          }
+          properties = {}
         },
         {
           id = 8,

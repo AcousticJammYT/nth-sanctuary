@@ -51,11 +51,7 @@
     <property name="area" type="object" value="9"/>
    </properties>
   </object>
-  <object id="7" name="climbentry" x="240" y="360" width="160" height="40">
-   <properties>
-    <property name="area" type="object" value="12"/>
-   </properties>
-  </object>
+  <object id="7" name="climblanding" x="240" y="360" width="160" height="40"/>
   <object id="8" name="climbentry" x="440" y="360" width="40" height="40">
    <properties>
     <property name="area" type="object" value="11"/>
