@@ -342,6 +342,7 @@ function Player:processClimbInputs()
     local dist
     if self.jumpchargecon >= 1 then
         if Input.released("confirm") then
+			self.jumpchargecon = 0
             self:doClimbJump(self.facing, self.jumpchargeamount)
         else
             if self.currentdir == "left" then
