@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 5,
-  nextobjectid = 51,
+  nextobjectid = 53,
   properties = {
     ["music"] = "climb"
   },
@@ -459,6 +459,22 @@ return {
           visible = true,
           properties = {
             ["area"] = { id = 41 }
+          }
+        },
+        {
+          id = 52,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 940,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "ddelta",
+            ["text"] = "* that switch up there looks a hell of a lot like me"
           }
         }
       }
