@@ -4,6 +4,7 @@ function Basic:init()
     super.init(self)
     self.time = 15.5
 	self.count = 0
+	self.arena_width = 100
 end
 
 function Basic:onStart()

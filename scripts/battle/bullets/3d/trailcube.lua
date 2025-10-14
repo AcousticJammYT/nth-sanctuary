@@ -19,7 +19,7 @@ function TrailCubeBullet:init(x, y, dir, speed, trails)
 		table.insert(self.x_last, self.x)
 		table.insert(self.y_last, self.y)
 	end
-	for i = 1, self.trails-2 do
+	for i = 1, self.trails-4 do
         local hitbox = Hitbox(self, 10, 10, 15, 15)
 		table.insert(self.trail_colliders, hitbox)
 	end
@@ -69,7 +69,7 @@ function TrailCubeBullet:update()
 			self.x_last[i] = self.x_last[i - 1]
 			self.y_last[i] = self.y_last[i - 1]
 		end
-		for i = self.trails-2, 2, -1 do
+		for i = self.trails-4, 2, -1 do
 			if i >= self.trails-math.floor(self.trails/2) then
 				local shrink = 0.5
 				self.trail_colliders[i] = Hitbox(self, self.x_last[i]-self.x+12.5, self.y_last[i]-self.y+12.5, 10, 10)
@@ -88,6 +88,12 @@ function TrailCubeBullet:update()
 	if self.x <= -20*self.trails then
 		self:remove()
 	end
+	if self.y >= SCREEN_HEIGHT+20*self.trails then
+		self:remove()
+	end
+	if self.y <= -20*self.trails then
+		self:remove()
+	end
 	self.particle_dtmult = self.particle_dtmult + DTMULT
 end
 
@@ -100,7 +106,11 @@ function TrailCubeBullet:draw()
     love.graphics.setBlendMode("add")
 	for i = self.trails, 1, -1 do
 		local ar, ag, ab = ColorUtils.mergeColor(COLORS["white"], {rr, rg, rb}, i/self.trails)
-		love.graphics.setColor(ColorUtils.mergeColor(COLORS["black"], unpack({ar, ag, ab}), self.alpha))
+		if i >= self.trails-5 then
+			love.graphics.setColor(ColorUtils.mergeColor(COLORS["black"], unpack({ar, ag, ab}), ((self.trails-i)/5)*self.alpha))
+		else
+			love.graphics.setColor(ColorUtils.mergeColor(COLORS["black"], unpack({ar, ag, ab}), self.alpha))
+		end
 		if self.con == 1 then
 			love.graphics.draw(self.sprite.texture, self.x_last[i]-self.x, self.y_last[i]-self.y, 0, 1, 1, 0, 0)
 		end

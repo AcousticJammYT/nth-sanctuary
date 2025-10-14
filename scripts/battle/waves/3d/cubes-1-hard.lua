@@ -32,6 +32,16 @@ function Basic:onStart()
 		local spinbullet = self:spawnBullet("3d/smallcube", a, b, math.rad(180), 0)
 		table.insert(self.spinbullets_r, spinbullet)
 	end
+	for i = 0, 5 do
+		local spike = self:spawnBulletTo(Game.battle.mask, "3d/smallcube", arena.left-20, arena.top+10+32*i, math.rad(180), 0)
+		self.timer:tween(1, spike, {x = arena.left-8}, "out-quad")
+		local spike2 = self:spawnBulletTo(Game.battle.mask, "3d/smallcube", arena.right+20, arena.top+10+32*i, math.rad(180), 0)
+		self.timer:tween(1, spike2, {x = arena.right+8}, "out-quad")
+		local spike3 = self:spawnBulletTo(Game.battle.mask, "3d/smallcube", arena.left+20+32*i, arena.top-20, math.rad(180), 0)
+		self.timer:tween(1, spike3, {y = arena.top-8}, "out-quad")
+		local spike4 = self:spawnBulletTo(Game.battle.mask, "3d/smallcube", arena.left+20+32*i, arena.bottom+20, math.rad(180), 0)
+		self.timer:tween(1, spike4, {y = arena.bottom+8}, "out-quad")
+	end
 end
 
 function Basic:onEnd()
@@ -48,8 +58,8 @@ function Basic:update()
 		self.sound:setVolume(self.radius/16)
 		self.sound:setPitch(0.8+(self.radius/16)*0.2)
 	end
-	if self.siner >= 10 and self.siner < 250 then
-		self.spinspeed = Utils.ease(0, 8, (self.siner-10) / 240, "outCubic")
+	if self.siner >= 10 and self.siner < 180 then
+		self.spinspeed = Utils.ease(0, 8, (self.siner-10) / 180, "outCubic")
 		for i,bullet in ipairs(self.spinbullets_l) do
 			bullet.draw_trails = true
 		end
@@ -58,13 +68,13 @@ function Basic:update()
 		end
 		self.sound:setPitch(1+(self.spinspeed/8)*0.2)
 	end
-	if Game.battle.wave_timer >= Game.battle.wave_length-3 then
+	if Game.battle.wave_timer >= Game.battle.wave_length-4 then
 		self.reversesiner = self.reversesiner + DTMULT
-		if self.reversesiner < 20 then
-			self.spinspeed = Utils.ease(8, 0, self.reversesiner / 20, "outCubic")
+		if self.reversesiner < 15 then
+			self.spinspeed = Utils.ease(8, 0, self.reversesiner / 15, "outCubic")
 		end
-		if self.reversesiner >= 20 and self.reversesiner < 80 then
-			self.spinspeed = Utils.ease(0, -8, (self.reversesiner-20) / 60, "outCubic")
+		if self.reversesiner >= 15 and self.reversesiner < 55 then
+			self.spinspeed = Utils.ease(0, -8, (self.reversesiner-15) / 40, "outCubic")
 		end
 		self.sound:setPitch(1+(self.spinspeed/8)*0.2)
 	end

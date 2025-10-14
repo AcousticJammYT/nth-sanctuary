@@ -143,7 +143,11 @@ function ThreeDPrism:drawBackground(fade)
 		love.graphics.setBlendMode("add")
 		for i = 30, 1, -1 do
 			local ar, ag, ab = ColorUtils.mergeColor(COLORS["gray"], {rr/2, rg/2, rb/2}, i/30)
-			love.graphics.setColor(ar, ag, ab, (1-(i/30) * fade)/2)
+			if i > 25 then
+				love.graphics.setColor(ColorUtils.mergeColor(COLORS["black"], unpack({ar, ag, ab}), ((30-i)/5)*fade))
+			else
+				love.graphics.setColor(ar, ag, ab, fade)
+			end
 			love.graphics.draw(self.particle_tex[(math.floor(self.rainbow_timer/4)%6)+1], particle.x_last[i], particle.y_last[i], particle.radius, 1, 1, 0, 0)
 		end
 		love.graphics.setBlendMode("alpha")

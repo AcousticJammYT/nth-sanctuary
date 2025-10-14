@@ -9,6 +9,8 @@ function Basic:init()
 	self.bullet_angle = math.rad(-90)
 	self.bullet_speed = 5
 	self.start_rotating = true
+	self.arena_width = 122
+	self.arena_height = 122
 end
 
 function Basic:onStart()
@@ -16,10 +18,10 @@ function Basic:onStart()
     self.spawned = {}
     local arena = Game.battle.arena
     local a, b = arena:getCenter()
-	self.timer:everyInstant(0.45, function()
+	self.timer:everyInstant(0.35, function()
 		self.count = self.count + 1
 		local player_aim = false
-		if self.count % 6 == 0 then
+		if self.count % 5 == 0 then
 			player_aim = true
 		end
 		if self.start_rotating and not player_aim then
@@ -42,7 +44,7 @@ function Basic:onStart()
 			if self.count % 2 == 1 then
 				self.g.moveadd = -1
 			end
-			Assets.playSound("3dprism_cubetravel", 0.8, MathUtils.random(0.9, 1.1))
+			Assets.playSound("3dprism_cubetravel", 0.8, MathUtils.random(0.8, 1.2))
 		end
 		self.g.xmove = TableUtils.pick({0,1,2,3})
 		self.g.con = 1
@@ -60,9 +62,9 @@ function Basic:update()
     -- Code here gets called every frame
     super.update(self)
 	self.siner = self.siner + DTMULT
-	self.bullet_speed = self.bullet_speed + 1.5 * DTMULT
-	if self.bullet_speed >= 8 then
-		self.bullet_speed = 8
+	self.bullet_speed = self.bullet_speed + 2 * DTMULT
+	if self.bullet_speed >= 10 then
+		self.bullet_speed = 10
 	end
     for i,bullet in ipairs(self.flybullets) do
 		if self.start_rotating and not bullet.player_aim then

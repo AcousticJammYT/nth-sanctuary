@@ -23,8 +23,7 @@ function ThreeDPrism:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "3d/cubes-1",
-        "3d/cubes-2",
+        "3d/cubes-3",
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble
@@ -97,20 +96,26 @@ function ThreeDPrism:onTurnEnd()
     self.progress = self.progress + 1
 end
 
-function ThreeDPrism:getNextWaves()
+function ThreeDPrism:getNextWaves()	
     if (self.progress == 0) then
         return { "3d/cubes-1" }
     elseif (self.progress == 1) then
         return { "3d/cubes-2" }
     elseif (self.progress == 2) then
-        return { "3d/cubes-1" }
+        return { "3d/cubes-3" }
     elseif (self.progress == 3) then
-        return { "3d/cubes-2" }
-    elseif (self.progress == 4) then
         return { "3d/cubes-1" }
-    elseif (self.progress == 5) then
-		self.progress = 0
+    elseif (self.progress == 4) then
         return { "3d/cubes-2" }
+    elseif (self.progress == 5) then
+        return { "3d/cubes-3" }
+    elseif (self.progress == 6) then
+        return { "3d/cubes-1-hard" }
+    elseif (self.progress == 7) then
+        return { "3d/cubes-2-hard" }
+    elseif (self.progress == 8) then
+		self.progress = 5
+        return { "3d/cubes-3-hard" }
     end
 
     return super.getNextWaves(self)
