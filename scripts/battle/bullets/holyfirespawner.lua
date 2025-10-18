@@ -2,13 +2,13 @@ local SmallBullet, super = Class(Bullet)
 
 function SmallBullet:init(x, y, bullets, count)
     -- Last argument = sprite path
-    super.init(self, x, y, "bullets/smallbullet")
+    super.init(self, x, y, "battle/bullets/smallbullet")
 	self.timer = 0
 	self.bullets = bullets or 2
 	self.speedtarg = 6
 	self.widthmod = 1
 	self.count = count or 1
-	self.turn = 1.5 * MathUtils.sign((self.count % 2) - 0.5)
+	self.turn = 1.5 * Utils.sign((self.count % 2) - 0.5)
     self:setHitbox(nil)
     self.sprite.visible = false
 
@@ -29,7 +29,7 @@ end
 function SmallBullet:onAdd(parent)
     super.onAdd(self, parent)
 	for i = 1, self.bullets do
-		table.insert(self.subs, self.wave:spawnBullet("holyfire", x, y, ((360 / self.bullets) * i-1), 0))
+		table.insert(self.subs, self.wave:spawnBullet("guei/holyfire", x, y, ((360 / self.bullets) * i-1), 0))
     end
 end
 
@@ -59,7 +59,7 @@ function SmallBullet:update()
 		bul.y = self.y + (bul.dist * 0.66) * math.sin(math.rad(-bul.angle))
 	end
 	if self.timer >= 10 and self.con == 0 then
-		self.physics.direction = MathUtils.angle(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y)
+		self.physics.direction = Utils.angle(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y)
 		self.con = 1
 	elseif self.timer >= 10 and self.con == 1 then
 		self.physics.speed = MathUtils.approach(self.physics.speed, self.speedtarg, (self.speedtarg/60)*DTMULT)
@@ -67,4 +67,4 @@ function SmallBullet:update()
 	end
 end
 
-return SmallBullet
+return SmallBullet 

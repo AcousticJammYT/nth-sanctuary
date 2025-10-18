@@ -2,7 +2,7 @@ local SmallBullet, super = Class(Bullet)
 
 function SmallBullet:init(x, y, dir, speed, rot)
     -- Last argument = sprite path
-    super.init(self, x, y, "bullets/diamond")
+    super.init(self, x, y, "battle/bullets/guei/diamond")
     self.rotation = rot
     -- Move the bullet in dir radians (0 = right, pi = left, clockwise rotation)
     self.physics.direction = dir
@@ -20,4 +20,4 @@ function SmallBullet:update()
     super.update(self)
 end
 
-return SmallBullet
+return SmallBullet 

@@ -59,7 +59,7 @@ function Basic:update()
 		local dist = 135 + MathUtils.random(20)
 		local dir
 		if self.sameattack == 1 then
-			dir = 15 + MathUtils.random(30) + (60 * MathUtils.randomInt(2))
+			dir = 15 + MathUtils.random(30) + (60 * love.math.random(2))
 		elseif self.sameattack == 2 then
 			dir = 15 + MathUtils.random(30) + (120 * self.sameattacker)
 		else
@@ -70,7 +70,7 @@ function Basic:update()
 		if self.ratio == 1 then
 			bullets = 3
 		end
-        local a = self:spawnBullet("holyfirespawner", Game.battle.arena.x + (dist * math.cos(-dir)), Game.battle.arena.y + ((dist * 0.75) * math.sin(-dir)), bullets, self.flames_made)
+        local a = self:spawnBullet("guei/holyfirespawner", Game.battle.arena.x + (dist * math.cos(-dir)), Game.battle.arena.y + ((dist * 0.75) * math.sin(-dir)), bullets, self.flames_made)
 		a.speedtarg = 6
 		a.widthmod = 1.25
 		self.spawn_flame = false

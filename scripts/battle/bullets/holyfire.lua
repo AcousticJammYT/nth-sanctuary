@@ -2,7 +2,7 @@ local SmallBullet, super = Class(Bullet)
 
 function SmallBullet:init(x, y, angle, dist)
     -- Last argument = sprite path
-    super.init(self, x, y, "bullets/holyfire/holyfire")
+    super.init(self, x, y, "battle/bullets/guei/holyfire")
 
     self.sprite:play(1/10, true)
     self:setScale(1)

@@ -39,7 +39,7 @@ function Aiming:onStart()
 			swipe_width = swipe_width + 40 - 10 * self.sameattack
 		end
 		local aim_override = 0
-		local side = TableUtils.pick({-1, 1})
+		local side = Utils.pick({-1, 1})
 		local xx, yy, tempangle
 		if self.sameattacker < 1 then
 			xx = Game.battle.arena.x - 40 + love.math.random(80)
@@ -48,7 +48,7 @@ function Aiming:onStart()
 				temp_angle = math.rad(254 + love.math.random(32))
 				aim_override = 0
 			else
-				temp_angle = MathUtils.angle(xx, yy, Game.battle.soul.x, Game.battle.soul.y)
+				temp_angle = Utils.angle(xx, yy, Game.battle.soul.x, Game.battle.soul.y)
 				aim_override = aim_override + 1
 			end
 		else
@@ -58,7 +58,7 @@ function Aiming:onStart()
 				temp_angle = math.rad((90 + (side * 90) - 16) + love.math.random(32))
 				aim_override = 0
 			else
-				temp_angle = MathUtils.angle(xx, yy, Game.battle.soul.x, Game.battle.soul.y)
+				temp_angle = Utils.angle(xx, yy, Game.battle.soul.x, Game.battle.soul.y)
 				aim_override = aim_override + 1
 			end
 		end
@@ -70,9 +70,9 @@ function Aiming:onStart()
 			for i = 0,2-sm do
 				local bul
 				if self.sameattacker == 0 then
-					bul = self:spawnBullet("diamondbullet", (xx - (swipe_width * side)) + (i * (swipe_width * side)), yy, temp_angle, 3, temp_angle)
+					bul = self:spawnBullet("guei/diamondbullet", (xx - (swipe_width * side)) + (i * (swipe_width * side)), yy, temp_angle, 3, temp_angle)
 				else
-					bul = self:spawnBullet("diamondbullet", xx, (yy - (swipe_width * side)) + (i * (swipe_width * side)), temp_angle, 3, temp_angle)
+					bul = self:spawnBullet("guei/diamondbullet", xx, (yy - (swipe_width * side)) + (i * (swipe_width * side)), temp_angle, 3, temp_angle)
 				end
 				bul.alpha = 0
 				if i == 1 then
@@ -108,4 +108,4 @@ function Aiming:update()
     super.update(self)
 end
 
-return Aiming
+return Aiming 
