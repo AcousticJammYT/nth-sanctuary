@@ -595,10 +595,6 @@ function Player:doClimbJump(direction, distance)
 				self.climbtimer = 0
 				Game.world.timer:during(duration, function()
 					self.climbtimer = self.climbtimer + DT
-					self.drawoffsety = -math.sin((self.climbtimer / duration) * math.pi) * (2 * (self.jumpchargeamount - 1))
-				end)
-				Game.world.timer:during(duration, function()
-					self.climbtimer = self.climbtimer + DT
 					self.drawoffsety = -math.sin((self.climbtimer / duration) * math.pi) * (2 * (self.jumpchargeamount - 1)) 
 					local afterimage = Sprite(self.sprite.texture, self.x, self.y + 16) -- for some reason the afterimage object insists on sticking directly to the player so i have to do this (sorry)
 					afterimage:setOrigin(0.5, 1)
