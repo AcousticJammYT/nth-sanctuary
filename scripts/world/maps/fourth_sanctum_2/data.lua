@@ -1489,10 +1489,10 @@ return {
             ["offx"] = 0,
             ["offy"] = -260,
             ["panel_h"] = "120",
-            ["spr_offx"] = 0,
-            ["spr_offy"] = 0,
+            ["spr_offx"] = 10,
+            ["spr_offy"] = 10,
             ["text"] = "WITH NO END IN SIGHT,\nHEROES CLIMB INFINITY FLIGHT.",
-            ["texture"] = "rune",
+            ["texture"] = "infinitystairs",
             ["txt_offx"] = -40,
             ["txt_offy"] = 30
           }

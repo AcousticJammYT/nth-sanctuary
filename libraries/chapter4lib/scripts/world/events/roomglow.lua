@@ -74,7 +74,7 @@ function RoomGlow:update()
 			if hfx then
 				hfx.alpha = self.actind
 			else
-				chara:addFX(ChurchHighlightFX(0, self.highlight, {darkcol = self.darkcol}), "highlight")
+				chara:addFX(ChurchHighlightFX(0, self.highlight, {darkcol = self.darkcol}, 1), "highlight")
 			end
 			if sfx then
 				sfx.scale = self.actind*2
