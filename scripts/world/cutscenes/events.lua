@@ -54,5 +54,17 @@ return {
         cutscene:fadeIn(1, {music = true})
         cutscene:wait(1)
         Game.lock_movement = false
+    end,
+    prism = function (cutscene)
+        local dd = cutscene:getCharacter("ddelta")
+        cutscene:setSpeaker(dd)
+        cutscene:text("* Oh, [wait:5]Delta Warriors! [wait:10]\n* You found me!")
+        cutscene:text("* Your reward for coming so far to find me....")
+        cutscene:wait(1)
+        Game.world.music:pause()
+        cutscene:text("* [speed:0.5]IS GETTING TOTALLY THRASHED")
+        cutscene:text("* [speed:1](btw this isnt canon Ral just wants to show off the boss)", {auto = true})
+        Game:encounter("3d")
+        --Game.world.music:play()
     end
 }

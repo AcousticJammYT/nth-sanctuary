@@ -1,0 +1,271 @@
+return {
+  version = "1.10",
+  luaversion = "5.1",
+  tiledversion = "1.10.2",
+  class = "",
+  orientation = "orthogonal",
+  renderorder = "right-down",
+  width = 16,
+  height = 32,
+  tilewidth = 40,
+  tileheight = 40,
+  nextlayerid = 6,
+  nextobjectid = 16,
+  properties = {
+    ["music"] = "darkchurch_intro"
+  },
+  tilesets = {
+    {
+      name = "bg_dw_church_tileset_new",
+      firstgid = 1,
+      filename = "../../../tilesets/bg_dw_church_tileset_new.tsx"
+    }
+  },
+  layers = {
+    {
+      type = "tilelayer",
+      x = 0,
+      y = 0,
+      width = 16,
+      height = 32,
+      id = 1,
+      name = "Tile Layer 1",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      encoding = "lua",
+      data = {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 434, 435, 435, 435, 435, 437, 437, 437, 437, 438, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 101, 101, 101, 101, 101, 101, 101, 101, 444, 0, 0, 0,
+        0, 0, 0, 440, 441, 101, 101, 101, 101, 101, 101, 441, 444, 0, 0, 0,
+        0, 0, 0, 446, 447, 447, 131, 101, 101, 132, 447, 447, 450, 0, 0, 0,
+        0, 0, 0, 456, 452, 453, 440, 132, 131, 444, 456, 452, 453, 0, 0, 0,
+        0, 0, 0, 462, 458, 459, 440, 126, 125, 444, 462, 458, 459, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 440, 132, 131, 444, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 440, 126, 125, 444, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 440, 132, 131, 444, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 440, 126, 125, 444, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 440, 132, 131, 444, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 440, 126, 125, 444, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 446, 447, 449, 450, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 453, 454, 455, 456, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 459, 460, 461, 462, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 3,
+      name = "collision",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 8,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 80,
+          y = 0,
+          width = 480,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 9,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 80,
+          y = 40,
+          width = 40,
+          height = 840,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 10,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 520,
+          y = 40,
+          width = 40,
+          height = 840,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 11,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 120,
+          y = 840,
+          width = 120,
+          height = 400,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 12,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 240,
+          y = 1200,
+          width = 160,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 13,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 400,
+          y = 840,
+          width = 120,
+          height = 400,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 4,
+      name = "markers",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 14,
+          name = "spawn",
+          type = "",
+          shape = "point",
+          x = 320,
+          y = 1120,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 2,
+      name = "objects_party",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 1,
+          name = "npc",
+          type = "",
+          shape = "point",
+          x = 320,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["actor"] = "ddelta",
+            ["cutscene"] = "events.prism"
+          }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 5,
+      name = "objects_overlay",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 15,
+          name = "filter",
+          type = "",
+          shape = "point",
+          x = -40,
+          y = -40,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["hue_start"] = "0",
+            ["hue_target"] = "-100",
+            ["sat_start"] = "0.5",
+            ["sat_target"] = "0",
+            ["speed"] = 5,
+            ["type"] = "custom",
+            ["val_start"] = "0.5",
+            ["val_target"] = "0.75"
+          }
+        }
+      }
+    }
+  }
+}
