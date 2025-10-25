@@ -48,7 +48,7 @@ function item:init()
 end
 
 function item:onWorldUse()
-	if MathUtils.randomInt(0, 255) >= 0 then
+	if MathUtils.randomInt(0, 255) == 0 then
 		Game.world:startCutscene(function(cutscene)
 			cutscene:text("* You put the Sound Stone to your head and concentrated.", nil, nil, {auto = true})
 			Game.world.music:pause()
