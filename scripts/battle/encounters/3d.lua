@@ -13,7 +13,8 @@ function ThreeDPrism:init()
 
     self.reduced_tension = true
     self.siner = 0
-
+	self.rage_anim_speed = 1
+	
     -- Add the dummy enemy to the encounter
     self.g = self:addEnemy("3d", 501, 269)
 

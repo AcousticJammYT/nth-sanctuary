@@ -55,10 +55,26 @@ function ThreeDPrism:init()
     -- Register act called "Smile"
     self:registerAct("HoldBreath", "Move\nfaster", nil, 2)
     self:registerAct("Gyrate", "Spin\n6%\nmercy")
+    self:registerAct("Challenge", "A very\nterrible\nidea", "susie")
 	
     self.progress = 0
 	self.exit_on_defeat = false
 	self.tired_percentage = -1
+    self.sprite.anim_delay = (1/30)
+    self.sprite.loop = true
+	self.sprite:setAnimation(function(sprite, wait)
+		while true do
+			sprite:setFrame(1)
+			wait(sprite.anim_delay)
+			while sprite.frame < #sprite.frames do
+				sprite:setFrame(sprite.frame + math.floor(Game.battle.encounter.rage_anim_speed))
+				wait(sprite.anim_delay)
+				sprite:setFrame(sprite.frame + math.ceil(Game.battle.encounter.rage_anim_speed))
+				wait(sprite.anim_delay)
+			end
+		end
+	end)
+	self.challenge_acted = false
 end
 
 function ThreeDPrism:isXActionShort(battler)
@@ -78,6 +94,50 @@ function ThreeDPrism:onAct(battler, name)
         Assets.stopAndPlaySound("pirouette", 0.7, 1.1)
         battler:setAnimation("pirouette")
 		return "* Kris spun around three-dimensionally!"
+	elseif name == "Challenge" then
+        battler:setAnimation("act")
+        Game.battle:startActCutscene(function(cutscene)
+			if self.challenge_acted then
+				Game.battle.timer:tween(0.5, Game.battle.encounter, {rage_anim_speed = 2}, "in-quad", function()
+					Game.battle.encounter.rage_anim_speed = 2
+				end)
+				Game.battle.timer:tween(0.5, self.sprite, {color = {1,0,0}}, "in-quad")
+				cutscene:text("* Susie challenged the Prism![wait:5]\n* The difficulty became unfair!")
+				self.dialogue_override = "Time for you to [color:red]DIE[color:reset]"
+			else
+				cutscene:text("* Susie challenged the Prism!")
+				cutscene:text("* Heh,[wait:1] I bet I could do this with my eyes closed!", "teeth_smile", "susie")
+				Game.battle.timer:tween(1, Game.battle.encounter, {rage_anim_speed = 2}, "in-quad", function()
+					Game.battle.encounter.rage_anim_speed = 2
+				end)
+				Game.battle.timer:tween(1, self.sprite, {color = {1,0,0}}, "in-quad")
+				cutscene:text("* The Prism turned red with anger![wait:5]\n* You definitely shouldn't have done that!")
+				self.dialogue_override = "You will [color:red]REGRET[color:reset] those\nwords you hear me"
+			end
+			self:removeAct("Challenge")
+			self:registerAct("BegForMercy", "Revert\ndifficulty", "all")
+		end)
+	elseif name == "BegForMercy" then
+        battler:setAnimation("act")
+        Game.battle:startActCutscene(function(cutscene)		
+			if self.challenge_acted then
+				Game.battle.timer:tween(0.5, Game.battle.encounter, {rage_anim_speed = 1}, "in-quad", function()
+					Game.battle.encounter.rage_anim_speed = 1
+				end)
+				Game.battle.timer:tween(0.5, self.sprite, {color = {1,1,1}}, "in-quad")
+				cutscene:text("* Everyone begged for mercy![wait:5]\n* The Prism obliges and tones down\nthe difficulty.")
+			else
+				cutscene:text("* Everyone begged for the Prism to tone down its attacks!")
+				Game.battle.timer:tween(1, Game.battle.encounter, {rage_anim_speed = 1}, "in-quad", function()
+					Game.battle.encounter.rage_anim_speed = 1
+				end)
+				Game.battle.timer:tween(1, self.sprite, {color = {1,1,1}}, "in-quad")
+				cutscene:text("* The prism turns towards you for a moment,[wait:5] then slows down...")
+				self.challenge_acted = true
+			end
+			self:removeAct("BegForMercy")
+			self:registerAct("Challenge", "Still a\nterrible\nidea", "susie")
+		end)
     elseif name == "Standard" then --X-Action
         return self:onShortAct(battler, name)
     end
