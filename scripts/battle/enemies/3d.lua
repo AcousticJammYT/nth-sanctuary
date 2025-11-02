@@ -98,29 +98,42 @@ function ThreeDPrism:onAct(battler, name)
         battler:setAnimation("act")
         Game.battle:startActCutscene(function(cutscene)
 			if self.challenge_acted then
+				Assets.playSound("rocket")
 				Game.battle.timer:tween(0.5, Game.battle.encounter, {rage_anim_speed = 2}, "in-quad", function()
 					Game.battle.encounter.rage_anim_speed = 2
 				end)
 				Game.battle.timer:tween(0.5, self.sprite, {color = {1,0,0}}, "in-quad")
+				if self.tired then
+					self:setTired(false)
+				end
 				cutscene:text("* Susie challenged the Prism![wait:5]\n* The difficulty became unfair!")
 				self.dialogue_override = "Time for you to [color:red]DIE[color:reset]"
 			else
 				cutscene:text("* Susie challenged the Prism!")
 				cutscene:text("* Heh,[wait:1] I bet I could do this with my eyes closed!", "teeth_smile", "susie")
+				Assets.playSound("rocket")
 				Game.battle.timer:tween(1, Game.battle.encounter, {rage_anim_speed = 2}, "in-quad", function()
 					Game.battle.encounter.rage_anim_speed = 2
 				end)
 				Game.battle.timer:tween(1, self.sprite, {color = {1,0,0}}, "in-quad")
+				if self.tired then
+					self:setTired(false)
+				end
 				cutscene:text("* The Prism turned red with anger![wait:5]\n* You definitely shouldn't have done that!")
 				self.dialogue_override = "You will [color:red]REGRET[color:reset] those\nwords you hear me"
 			end
+			self.last_comment = self.comment
+			self.name = "3D Prism"
+			self.comment = "(Furious)"
 			self:removeAct("Challenge")
-			self:registerAct("BegForMercy", "Revert\ndifficulty", "all")
+			self:registerAct("BegForMercy", "Revert\ndifficulty", "all", 8)
 		end)
 	elseif name == "BegForMercy" then
         battler:setAnimation("act")
         Game.battle:startActCutscene(function(cutscene)		
 			if self.challenge_acted then
+				self:addMercy(25)
+				Assets.playSound("sparkle_gem")
 				Game.battle.timer:tween(0.5, Game.battle.encounter, {rage_anim_speed = 1}, "in-quad", function()
 					Game.battle.encounter.rage_anim_speed = 1
 				end)
@@ -128,12 +141,20 @@ function ThreeDPrism:onAct(battler, name)
 				cutscene:text("* Everyone begged for mercy![wait:5]\n* The Prism obliges and tones down\nthe difficulty.")
 			else
 				cutscene:text("* Everyone begged for the Prism to tone down its attacks!")
+				Assets.playSound("sparkle_gem")
 				Game.battle.timer:tween(1, Game.battle.encounter, {rage_anim_speed = 1}, "in-quad", function()
 					Game.battle.encounter.rage_anim_speed = 1
 				end)
 				Game.battle.timer:tween(1, self.sprite, {color = {1,1,1}}, "in-quad")
+				self:addMercy(25)
 				cutscene:text("* The prism turns towards you for a moment,[wait:5] then slows down...")
 				self.challenge_acted = true
+			end
+			self.comment = self.last_comment or ""
+			if self.comment ~= "" then
+				self.name = "3D Prism"
+			else
+				self.name = "3D Spinning Prism"
 			end
 			self:removeAct("BegForMercy")
 			self:registerAct("Challenge", "Still a\nterrible\nidea", "susie")
@@ -147,6 +168,14 @@ function ThreeDPrism:onAct(battler, name)
     return super.onAct(self, battler, name)
 end
 
+function ThreeDPrism:setTired(bool, hide_message)
+	super.setTired(self, bool, hide_message)
+    if self.comment ~= "" then
+		self.name = "3D Prism"
+	else
+		self.name = "3D Spinning Prism"
+	end
+end
 function ThreeDPrism:onShortAct(battler, name)
     if name == "Standard" then --X-Action
         Assets.stopAndPlaySound("pirouette", 0.7, 1.1)
