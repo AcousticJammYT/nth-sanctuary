@@ -118,12 +118,12 @@ return {
 		kris:shake(2)
 		susie:shake(2)
 		ralsei:shake(2)
-		local delay_sound_time
-		local complexsnd = ComplexSound(0,0,-1)
-        complexsnd:add(4, "break1", 1, 0.95, 0, -1, 0)
-        complexsnd:add(0, "glassbreak", 0.6, 0.4, 2, -1, 0)
-        complexsnd:add(3, "punchmed", 0.7, 0.95, 0, -1, 0)
-        complexsnd:play()
+		local snd = ComplexSoundUpdater(0,0,-1)
+        Game.world:addChild(snd)
+        snd.complexsnd:add(1, "break1", 1, 0.95, 0, -1, 0)
+        snd.complexsnd:add(2, "glassbreak", 0.6, 0.4, 2, -1, 0)
+        snd.complexsnd:add(3, "punchmed", 0.7, 0.95, 0, -1, 0)
+        snd.complexsnd:play()
 		Assets.playSound("ch4_first_intro_breaking", 0.5, 0.5)
 		Assets.playSound("ch4_first_intro_breaking", 0.5, 0.44)
         for _, sprite in ipairs(remove) do
@@ -188,6 +188,7 @@ return {
         for _, sprite in ipairs(remove) do
             sprite:remove()
         end
+		snd:remove()
         cutscene:wait(0.5)
         cutscene:setSpeaker(susie)
         Assets.playSound("whip_hard")
