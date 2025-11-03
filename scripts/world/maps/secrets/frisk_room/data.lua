@@ -99,7 +99,9 @@ return {
           rotation = 0,
           gid = 833,
           visible = true,
-          properties = {}
+          properties = {
+            ["color"] = "#ff4b61a3"
+          }
         },
         {
           id = 16,
@@ -113,7 +115,9 @@ return {
           rotation = 0,
           gid = 829,
           visible = true,
-          properties = {}
+          properties = {
+            ["color"] = "#ff4b61a3"
+          }
         },
         {
           id = 17,
@@ -127,7 +131,9 @@ return {
           rotation = 0,
           gid = 829,
           visible = true,
-          properties = {}
+          properties = {
+            ["color"] = "#ff4b61a3"
+          }
         },
         {
           id = 20,
@@ -141,7 +147,9 @@ return {
           rotation = 0,
           gid = 830,
           visible = true,
-          properties = {}
+          properties = {
+            ["color"] = "#ff4b61a3"
+          }
         }
       }
     },
