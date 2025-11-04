@@ -6,14 +6,15 @@ return {
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
-  height = 16,
+  height = 18,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 7,
-  nextobjectid = 25,
+  nextlayerid = 11,
+  nextobjectid = 39,
   properties = {
     ["border"] = "",
-    ["music"] = "grand_bells"
+    ["music"] = "grand_bells",
+    ["name"] = "Entrance to Grand Sanctum"
   },
   tilesets = {
     {
@@ -29,7 +30,7 @@ return {
     },
     {
       name = "light_areas",
-      firstgid = 281,
+      firstgid = 282,
       filename = "../../tilesets/light_areas.tsx"
     }
   },
@@ -54,7 +55,7 @@ return {
       x = 0,
       y = 0,
       width = 16,
-      height = 16,
+      height = 18,
       id = 1,
       name = "Tile Layer 1",
       class = "",
@@ -78,6 +79,8 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 171, 173, 162, 174, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 171, 172, 173, 184, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 171, 173, 173, 174, 0, 0, 0, 0, 0, 0,
@@ -89,7 +92,7 @@ return {
       type = "objectgroup",
       draworder = "topdown",
       id = 2,
-      name = "objects_party",
+      name = "objects_closeddoor",
       class = "",
       visible = true,
       opacity = 1,
@@ -105,21 +108,67 @@ return {
           type = "",
           shape = "rectangle",
           x = 134,
-          y = 440,
+          y = 520,
           width = 360,
           height = 310,
           rotation = 0,
           gid = 280,
           visible = true,
           properties = {}
-        },
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 9,
+      name = "objects_opendoor",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
         {
-          id = 14,
+          id = 27,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 134,
+          y = 520,
+          width = 360,
+          height = 310,
+          rotation = 0,
+          gid = 281,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 7,
+      name = "objects_party",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 30,
           name = "transition",
           type = "",
           shape = "rectangle",
           x = 240,
-          y = 640,
+          y = 720,
           width = 160,
           height = 40,
           rotation = 0,
@@ -130,14 +179,14 @@ return {
           }
         },
         {
-          id = 20,
+          id = 31,
           name = "cameratarget",
           type = "",
           shape = "rectangle",
           x = 240,
           y = 440,
           width = 160,
-          height = 40,
+          height = 120,
           rotation = 0,
           visible = true,
           properties = {
@@ -145,6 +194,35 @@ return {
             ["locky"] = true,
             ["marker"] = "targ",
             ["time"] = 1
+          }
+        },
+        {
+          id = 32,
+          name = "savepoint",
+          type = "",
+          shape = "rectangle",
+          x = 200,
+          y = 600,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 37,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 240,
+          y = 480,
+          width = 160,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["solid"] = true,
+            ["text"] = "* (It's locked...)[wait:5]\n* (Seems like you need a lot of [color:9999ff]Dark Shards[color:reset]...)"
           }
         }
       }
@@ -169,7 +247,7 @@ return {
           type = "",
           shape = "point",
           x = 0,
-          y = 160,
+          y = 240,
           width = 0,
           height = 0,
           rotation = 0,
@@ -185,11 +263,11 @@ return {
           type = "",
           shape = "rectangle",
           x = 580,
-          y = 670,
+          y = 750,
           width = 120,
           height = 510,
           rotation = 0,
-          gid = 2147483931,
+          gid = 2147483932,
           visible = true,
           properties = {
             ["light"] = true,
@@ -204,11 +282,11 @@ return {
           type = "",
           shape = "rectangle",
           x = 400,
-          y = 680,
+          y = 760,
           width = 160,
           height = 680,
           rotation = 0,
-          gid = 2147483931,
+          gid = 2147483932,
           visible = true,
           properties = {
             ["light"] = true,
@@ -223,11 +301,11 @@ return {
           type = "",
           shape = "rectangle",
           x = 80,
-          y = 680,
+          y = 760,
           width = 160,
           height = 680,
           rotation = 0,
-          gid = 2147483931,
+          gid = 2147483932,
           visible = true,
           properties = {
             ["light"] = true,
@@ -242,11 +320,11 @@ return {
           type = "",
           shape = "rectangle",
           x = -60,
-          y = 670,
+          y = 750,
           width = 120,
           height = 510,
           rotation = 0,
-          gid = 2147483931,
+          gid = 2147483932,
           visible = true,
           properties = {
             ["light"] = true,
@@ -256,6 +334,21 @@ return {
           }
         }
       }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 10,
+      name = "objects_top",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {}
     },
     {
       type = "objectgroup",
@@ -277,22 +370,9 @@ return {
           type = "",
           shape = "rectangle",
           x = 200,
-          y = 440,
+          y = 520,
           width = 40,
           height = 200,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 11,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 240,
-          y = 400,
-          width = 160,
-          height = 40,
           rotation = 0,
           visible = true,
           properties = {}
@@ -303,9 +383,73 @@ return {
           type = "",
           shape = "rectangle",
           x = 400,
-          y = 440,
+          y = 520,
           width = 40,
           height = 200,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 33,
+          name = "",
+          type = "",
+          shape = "polygon",
+          x = 240,
+          y = 520,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 50, y = -20 },
+            { x = 50, y = -40 },
+            { x = 0, y = -40 }
+          },
+          properties = {}
+        },
+        {
+          id = 34,
+          name = "",
+          type = "",
+          shape = "polygon",
+          x = 400,
+          y = 520,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 0, y = -40 },
+            { x = -50, y = -40 },
+            { x = -50, y = -20 }
+          },
+          properties = {}
+        },
+        {
+          id = 35,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 250,
+          y = 210,
+          width = 40,
+          height = 270,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 36,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 350,
+          y = 210,
+          width = 40,
+          height = 270,
           rotation = 0,
           visible = true,
           properties = {}
@@ -332,7 +476,7 @@ return {
           type = "",
           shape = "point",
           x = 320,
-          y = 560,
+          y = 640,
           width = 0,
           height = 0,
           rotation = 0,
@@ -345,7 +489,7 @@ return {
           type = "",
           shape = "point",
           x = 320,
-          y = 600,
+          y = 680,
           width = 0,
           height = 0,
           rotation = 0,
@@ -358,7 +502,7 @@ return {
           type = "",
           shape = "point",
           x = 320,
-          y = 200,
+          y = 320,
           width = 0,
           height = 0,
           rotation = 0,

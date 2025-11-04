@@ -1,11 +1,13 @@
 local GrandShardDoorDisplay, super = Class(Object)
 
-function GrandShardDoorDisplay:init()
+function GrandShardDoorDisplay:init(finished)
     super.init(self)
 	self:setOrigin(0.5,1)
     self.debug_select = true
 
 	self.height = 40
+
+	self.finished = finished or false
 
     self.text = ProphecyText(nil, 0, 0, {auto_size = true})
     self.text.debug_select = false
@@ -13,7 +15,9 @@ function GrandShardDoorDisplay:init()
     self.text.font_size = 16
     self.text.align = "center"
     self.text:setText("WITH ALL    COLLECTED,\nTHE DOOR SHALL OPEN...")
-    self.text:setOrigin(0.5,1)
+	if self.finished then
+		self.text:setText("AND NOW...\nGRAND SANCTUARY IS WAITING...!")
+	end
     self:addChild(self.text)
 	self.width = (self.text.width+10)*2
 	
@@ -52,7 +56,9 @@ function GrandShardDoorDisplay:draw()
     love.graphics.stencil(function()
         local last_shader = love.graphics.getShader()
         love.graphics.setShader(Kristal.Shaders["Mask"])
-		Draw.draw(self.shard_icon, 60, 2, 0, 1, 1)
+		if not self.finished then
+			Draw.draw(self.shard_icon, 60, 2, 0, 1, 1)
+		end
 		Draw.drawCanvas(self.text.canvas, 0, 0, 0, 1, 1)
         love.graphics.setShader(last_shader)
     end, "replace", 1)

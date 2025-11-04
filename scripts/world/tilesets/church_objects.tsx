@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="church_objects" tilewidth="900" tileheight="800" tilecount="18" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="church_objects" tilewidth="900" tileheight="800" tilecount="19" columns="0">
  <editorsettings>
   <export target="church_objects.lua" format="lua"/>
  </editorsettings>
@@ -63,5 +63,8 @@
  </tile>
  <tile id="19">
   <image width="360" height="310" source="../../../assets/sprites/world/objects/darkdoor_closed.png"/>
+ </tile>
+ <tile id="20">
+  <image width="360" height="310" source="../../../assets/sprites/world/objects/darkdoor_open.png"/>
  </tile>
 </tileset>

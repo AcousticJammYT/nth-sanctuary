@@ -6,9 +6,22 @@ function map:init(world, data)
 end
 
 function map:onEnter()
-    local bells_1 = Sprite("world/parallax/bells_parallax_golden_01", 0, -160)
-    local bells_2 = Sprite("world/parallax/bells_parallax_golden_02", 0, -160)
-    local bells_3 = Sprite("world/parallax/bells_parallax_golden_01", 0, -120)
+	local finished = false
+	for _, event in ipairs(self.events) do
+		if event.layer == self.layers["objects_opendoor"] then
+			 event.visible = finished
+		end
+		if event.layer == self.layers["objects_closeddoor"] then
+			 event.visible = not finished
+		end
+	end
+	for _,solid in ipairs(self:getEvents("interactable")) do
+		solid.solid = true
+		if finished then solid:remove() end
+	end
+    local bells_1 = Sprite("world/parallax/bells_parallax_golden_01", 0, -85)
+    local bells_2 = Sprite("world/parallax/bells_parallax_golden_02", 0, -85)
+    local bells_3 = Sprite("world/parallax/bells_parallax_golden_01", 0, -45)
 	
     bells_1:setParallax(0.9, 0.9)
 	bells_1:setScale(2,2)
@@ -29,11 +42,11 @@ function map:onEnter()
     Game.world:addChild(bells_3)
     bells_3:setLayer(Game.world:parseLayer("objects_parallax"))
 	
-    self.display = GrandShardDoorDisplay()
-    self.display.layer = 10000000
+    self.display = GrandShardDoorDisplay(finished)
+    self.display:setLayer(Game.world:parseLayer("objects_top"))
     Game.world:addChild(self.display)
     self.display.x = SCREEN_WIDTH/2
-    self.display.y = 100
+    self.display.y = 180
 end
 
 return map
