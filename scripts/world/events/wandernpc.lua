@@ -35,16 +35,16 @@ function WanderNPC:update()
 		end
 		if self.walk_speed > 0 then
 			if self.walk_dir == "up" then
-				self:move(0, -1, self.walk_speed)
+				self:move(0, -1, self.walk_speed*DTMULT)
 			end
 			if self.walk_dir == "left" then
-				self:move(-1, 0, self.walk_speed)
+				self:move(-1, 0, self.walk_speed*DTMULT)
 			end
 			if self.walk_dir == "down" then
-				self:move(0, 1, self.walk_speed)
+				self:move(0, 1, self.walk_speed*DTMULT)
 			end
 			if self.walk_dir == "right" then
-				self:move(1, 0, self.walk_speed)
+				self:move(1, 0, self.walk_speed*DTMULT)
 			end
 		end
 	end
