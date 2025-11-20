@@ -131,6 +131,7 @@ function ProphecyScrollFXAlt:drawPart(texture, alpha)
 		Draw.drawCanvas(surf_textured)
 		love.graphics.setStencilTest()
 		Draw.setColor(1,1,1,1)
+		love.graphics.setBlendMode("add");
 	end
     love.graphics.stencil(function()
         local last_shader = love.graphics.getShader()
@@ -140,7 +141,6 @@ function ProphecyScrollFXAlt:drawPart(texture, alpha)
         love.graphics.setShader(last_shader)
     end, "replace", 1)
     love.graphics.setStencilTest("greater", 0)
-	love.graphics.setBlendMode("add");
     Draw.drawCanvas(surf_textured);
 	love.graphics.setBlendMode("alpha");
     love.graphics.setStencilTest()
