@@ -76,7 +76,7 @@ function ProphecyScrollFX:drawPart(texture, min, max, alpha)
     local x, y = -((_cx * 2) + (self.tick * 15)) * 0.5, -((_cy * 2) + (self.tick * 15)) * 0.5
     draw_sprite_tiled_ext(Assets.getTexture("backgrounds/IMAGE_DEPTH_EXTEND_MONO_SEAMLESS_BRIGHTER"), 0, x, y, 2, 2, oldHexToRgb("#42D0FF", 1));
     local orig_bm, orig_am = love.graphics.getBlendMode()
-    love.graphics.setBlendMode("add", "premultiplied");
+    love.graphics.setBlendMode("add");
     draw_sprite_tiled_ext(pnl_canvas, 0, x, y, 2, 2, oldHexToRgb("#42D0FF", alpha));
     love.graphics.setBlendMode(orig_bm, orig_am);
     love.graphics.setColorMask(true, true, true, true);
@@ -108,7 +108,9 @@ function ProphecyScrollFX:drawPart(texture, min, max, alpha)
         love.graphics.setShader(last_shader)
     end, "replace", 1)
     love.graphics.setStencilTest("greater", 0)
+	Draw.setColor(1,1,1,0.7)
     Draw.drawCanvas(surf_textured);
+	Draw.setColor(1,1,1,1)
     love.graphics.setStencilTest()
 end
 

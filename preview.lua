@@ -69,7 +69,7 @@ function preview:draw()
 		love.graphics.setColor(1,1,1)
 		self:drawPart(rune, 0.5, 1.0, 1, -amt, -amt)
 		self:drawPart(rune, 0.5, 1.0, 1, amt, amt)
-		love.graphics.setColor(0, 0, 0, 0.7)
+		love.graphics.setColor(0, 0, 0, 0.6)
 		love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 		self:drawPart(rune, 0.5, 1.0, 1, 0, 0)
 		Draw.popCanvas(true)
@@ -133,7 +133,7 @@ function preview:drawPart(texture, min, max, alpha, xx, yy)
     local x, y = -((_cx * 2) + (self.tick * 15)) * 0.5, -((_cy * 2) + (self.tick * 15)) * 0.5
     draw_sprite_tiled_ext(self.prophecy, 0, x, y, 2, 2, oldHexToRgb("#42D0FF", 1));
     local orig_bm, orig_am = love.graphics.getBlendMode()
-    love.graphics.setBlendMode("add", "premultiplied");
+    love.graphics.setBlendMode("add");
     draw_sprite_tiled_ext(pnl_canvas, 0, x, y, 2, 2, oldHexToRgb("#42D0FF", alpha));
     love.graphics.setBlendMode(orig_bm, orig_am);
     Draw.popCanvas()
@@ -149,8 +149,9 @@ function preview:drawPart(texture, min, max, alpha, xx, yy)
         love.graphics.setShader(last_shader)
     end, "replace", 1)
     love.graphics.setStencilTest("greater", 0)
-	Draw.setColor(last_color)
+	Draw.setColor(1,1,1,0.7)
     Draw.drawCanvas(surf_textured);
+	Draw.setColor(1,1,1,1)
     love.graphics.setStencilTest()
 end
 
