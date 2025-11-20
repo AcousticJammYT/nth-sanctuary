@@ -43,6 +43,7 @@ function ProphecyPanel:init(sprite, text, width, height)
     self.liteblue = ColorUtils.hexToRGB("#FFFFFFFF")
 	
 	self.panel_alpha = 0
+	self.broken_hsv = false
 end
 
 local function draw_sprite_tiled_ext(tex, _, x, y, sx, sy, color, alpha)
@@ -62,8 +63,10 @@ end
 function ProphecyPanel:draw()
     --TODO: figure out the scrolling masked texture effect
 	local hsv = nil
-	for _,filter in ipairs(Game.world.map:getEvents("filter")) do
-		hsv = filter
+	if self.broken_hsv then
+		for _,filter in ipairs(Game.world.map:getEvents("filter")) do
+			hsv = filter
+		end
 	end
 		
 	self.siner = self.siner + DTMULT
@@ -131,11 +134,13 @@ function ProphecyPanel:draw()
 	end]]
 	Draw.popCanvas()
 	Draw.popCanvas()
-	local hsv_shader = Assets.getShader("hsv_transform")
-	local last_shader = love.graphics.getShader()
-	if hsv and hsv.fx and hsv.fx.hue then
-		love.graphics.setShader(hsv_shader)
-		hsv_shader:send("_hsv", {360-hsv.fx.hue, 1, 1})
+	if self.broken_hsv then
+		local hsv_shader = Assets.getShader("hsv_transform")
+		local last_shader = love.graphics.getShader()
+		if hsv and hsv.fx and hsv.fx.hue then
+			love.graphics.setShader(hsv_shader)
+			hsv_shader:send("_hsv", {360-hsv.fx.hue, 2-hsv.fx.sat, 1})
+		end
 	end
 	for i = 1, 2 do	
 		Draw.setColor(1,1,1,self.panel_alpha * 0.45) -- The alpha isn't accurate to DR's code but fuck it
@@ -144,7 +149,7 @@ function ProphecyPanel:draw()
 	Draw.setColor(1,1,1,self.panel_alpha*0.7)
 	Draw.draw(back_canvas, (self.sprite.x - self.x) + xsin, (self.sprite.y - self.y) + ysin, 0, 2, 2)
 	love.graphics.setShader(last_shader)
-	if hsv and hsv.fx and hsv.fx.hue then
+	if hsv and hsv.fx and hsv.fx.hue and self.broken_hsv then
 		love.graphics.stencil(function()
 			local last_shader = love.graphics.getShader()
 			love.graphics.setShader(Kristal.Shaders["Mask"])
