@@ -400,13 +400,12 @@
     <property name="offx" type="float" value="0"/>
     <property name="offy" type="float" value="-260"/>
     <property name="panel_h" value="120"/>
-    <property name="spr_offx" type="float" value="10"/>
-    <property name="spr_offy" type="float" value="10"/>
+    <property name="spr_offx" type="float" value="64"/>
+    <property name="spr_offy" type="float" value="72"/>
     <property name="text">WITH NO END IN SIGHT,
 HEROES CLIMB INFINITY FLIGHT.</property>
     <property name="texture" value="infinitystairs"/>
-    <property name="txt_offx" type="float" value="-40"/>
-    <property name="txt_offy" type="float" value="30"/>
+    <property name="txt_offy" type="float" value="24"/>
    </properties>
   </object>
   <object id="104" name="roomglow" x="0" y="0">

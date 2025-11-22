@@ -451,12 +451,11 @@ return {
             ["no_back"] = false,
             ["offx"] = -20,
             ["offy"] = -200,
-            ["spr_offx"] = 30,
-            ["spr_offy"] = -20,
+            ["spr_offx"] = 32,
+            ["spr_offy"] = 78,
             ["text"] = "FRISK ROOM",
             ["texture"] = "friskroom",
-            ["txt_offx"] = 90,
-            ["txt_offy"] = 25
+            ["txt_offy"] = 16
           }
         }
       }

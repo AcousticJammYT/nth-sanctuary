@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="40" tileheight="40" infinite="0" nextlayerid="17" nextobjectid="59">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="40" tileheight="40" infinite="0" nextlayerid="17" nextobjectid="61">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -112,7 +112,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,133,133,133,133,133,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,133,133,133,133,133,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,133,133,133,133,133,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,133,133,133,133,133,0,0,676,676,676,676,676,676,676,676,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,133,133,133,133,133,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,133,133,133,133,133,133,133,133,133,133,133,133,133,133,133,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,133,133,133,133,133,133,133,133,133,133,133,133,133,133,133
 </data>
@@ -134,11 +134,11 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,135,141,74,74,74,359,360,74,74,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,135,141,147,676,676,676,676,676,74,74,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,135,141,147,158,436,344,345,346,436,74,74,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,135,141,147,158,159,442,350,351,352,442,74,74,434,435,435,435,435,435,437,438,
-0,0,0,0,0,0,0,0,0,135,141,147,158,159,0,442,356,357,358,442,477,74,446,447,447,447,447,447,449,450,
-74,74,74,74,74,378,74,74,74,141,147,158,159,0,0,442,362,363,364,442,676,676,466,453,465,454,455,452,464,456,
-74,477,74,74,74,74,74,74,74,147,158,159,0,0,0,442,368,369,370,442,481,482,472,459,471,460,461,458,470,462,
-676,676,676,676,676,676,676,676,676,158,159,0,0,0,0,473,0,0,0,473,487,488,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,135,141,147,158,159,442,350,351,352,442,74,478,74,74,353,354,74,475,365,366,
+0,0,0,0,0,0,0,0,0,135,141,147,158,159,0,442,356,357,358,442,378,74,74,74,359,360,74,477,371,372,
+74,74,74,74,74,378,74,74,74,141,147,158,159,0,0,442,362,363,364,442,676,676,676,676,676,676,676,676,676,676,
+74,477,74,74,74,74,74,74,74,147,158,159,0,0,0,442,368,369,370,442,481,482,483,484,436,481,482,483,484,436,
+676,676,676,676,676,676,676,676,676,158,159,0,0,0,0,473,0,0,0,473,487,488,489,490,442,487,488,489,490,442
 </data>
  </layer>
  <layer id="3" name="roomglow_dark" width="30" height="20" visible="0">
@@ -183,28 +183,15 @@
   <object id="56" name="entry2" x="820" y="280">
    <point/>
   </object>
+  <object id="59" name="entry3" x="1160" y="640">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup id="8" name="objects_party">
   <object id="22" name="transition" x="-40" y="680" width="40" height="80">
    <properties>
     <property name="map" value="base_east_transition1"/>
     <property name="marker" value="entry2"/>
-   </properties>
-  </object>
-  <object id="23" name="prophecy" x="880" y="600" width="320" height="80">
-   <properties>
-    <property name="fade" type="bool" value="true"/>
-    <property name="no_back" type="bool" value="true"/>
-    <property name="offx" type="float" value="10"/>
-    <property name="offy" type="float" value="-250"/>
-    <property name="panel_h" value="120"/>
-    <property name="spr_offx" type="float" value="0"/>
-    <property name="spr_offy" type="float" value="0"/>
-    <property name="text">AND THEIR JOURNEY WILL 
-KNOW NO END.</property>
-    <property name="texture" value="rune"/>
-    <property name="txt_offx" type="float" value="0"/>
-    <property name="txt_offy" type="float" value="50"/>
    </properties>
   </object>
   <object id="25" name="roomglow" x="200" y="52">
@@ -234,6 +221,12 @@ KNOW NO END.</property>
     <property name="marker" value="entry"/>
    </properties>
   </object>
+  <object id="60" name="transition" x="1200" y="600" width="40" height="80">
+   <properties>
+    <property name="map" value="base_east2_prophecy"/>
+    <property name="marker" value="entry"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#55aa00" id="7" name="collision">
   <object id="5" x="0" y="600" width="360" height="80"/>
@@ -253,7 +246,6 @@ KNOW NO END.</property>
   <object id="18" x="360" y="760">
    <polygon points="0,0 240,-240 240,40 0,40"/>
   </object>
-  <object id="26" x="1200" y="600" width="40" height="80"/>
  </objectgroup>
  <objectgroup id="16" name="objects_fog">
   <object id="58" name="churchfog" x="-270" y="60">

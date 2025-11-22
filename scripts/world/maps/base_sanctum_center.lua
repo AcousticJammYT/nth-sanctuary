@@ -718,12 +718,10 @@ return {
             ["no_back"] = true,
             ["offx"] = -60,
             ["offy"] = -180,
-            ["spr_offx"] = 14,
-            ["spr_offy"] = 0,
+            ["spr_offx"] = 63,
+            ["spr_offy"] = 81,
             ["text"] = "WORLDS ENTER COLLISION.\nTHE KNIGHT IS TO NO FAULT.",
-            ["texture"] = "collide",
-            ["txt_offx"] = 0,
-            ["txt_offy"] = 20
+            ["texture"] = "collide"
           }
         },
         {

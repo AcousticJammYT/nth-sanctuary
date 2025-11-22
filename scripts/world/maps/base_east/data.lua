@@ -958,13 +958,12 @@ return {
             ["fade"] = true,
             ["no_back"] = true,
             ["offx"] = 0,
-            ["offy"] = -175,
-            ["spr_offx"] = 18,
-            ["spr_offy"] = 0,
+            ["offy"] = -190,
+            ["spr_offx"] = 50,
+            ["spr_offy"] = 75,
             ["text"] = "THE HEROES FIND THE DEOXYNN.\nTHE DEOXYNN, WHO LIES ON COLD GROUND.",
             ["texture"] = "jamm",
-            ["txt_offx"] = -80,
-            ["txt_offy"] = 15
+            ["txt_offy"] = 16
           }
         },
         {

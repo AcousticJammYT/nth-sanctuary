@@ -1534,12 +1534,11 @@ return {
             ["offx"] = 0,
             ["offy"] = -260,
             ["panel_h"] = "120",
-            ["spr_offx"] = 10,
-            ["spr_offy"] = 10,
+            ["spr_offx"] = 64,
+            ["spr_offy"] = 72,
             ["text"] = "WITH NO END IN SIGHT,\nHEROES CLIMB INFINITY FLIGHT.",
             ["texture"] = "infinitystairs",
-            ["txt_offx"] = -40,
-            ["txt_offy"] = 30
+            ["txt_offy"] = 24
           }
         },
         {
