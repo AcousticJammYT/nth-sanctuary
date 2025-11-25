@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="3" nextobjectid="4">
+ <editorsettings>
+  <export target="prophecytest.lua" format="lua"/>
+ </editorsettings>
+ <layer id="1" name="Tile Layer 1" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="objects">
+  <object id="1" name="prophecy" x="320" y="240">
+   <properties>
+    <property name="alwaysvisible" type="bool" value="true"/>
+    <property name="offx" type="float" value="0"/>
+    <property name="offy" type="float" value="0"/>
+    <property name="text">GEN WILL THEN SAY
+&quot;THIS IS&quot; AND THEN &quot;SIGMA.&quot;</property>
+    <property name="texture" value="genreal"/>
+    <property name="txt_offy" type="float" value="-64"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+</map>
