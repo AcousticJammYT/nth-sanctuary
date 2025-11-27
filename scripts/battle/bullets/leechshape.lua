@@ -13,8 +13,8 @@ function LeechShape:init(x, y)
     --self:setScale(1, 1)
     --self.scalefactor = 1
 
-    --self.can_do_shrivel = false
-    --self.can_do_pushback = false
+    self.can_do_shrivel = false
+    self.can_do_pushback = false
     --self.can_destroy = false
 	
 	self.updateimageangle = true
@@ -27,20 +27,38 @@ function LeechShape:update()
 end
 
 function LeechShape:destroy()
-    self.wave.spinfactor =  self.wave.spinfactor - 0.3
+    self.wave.spinfactor =  self.wave.spinfactor - 0.25
 	super.destroy(self)
 end
 
 function LeechShape:onDamage(soul)
     local damage = self:getDamage()
     if damage > 0 then
+		Assets.playSound("spawn_weaker", 1, 2)
+		Assets.playSound("break1")
         local target = self:getTarget()
         local battlers = Game.battle:hurt(damage, false, target, self:shouldSwoon(damage, target, soul))
         soul.inv_timer = self.inv_timer
         soul:onDamage(self, damage)
-		local bullet = self.wave:spawnBullet("leechblob", self.x, self.y)
-		bullet.attacker = self.attacker
-		bullet.damage = self:getDamage()
+		local tp_blob = self.wave:spawnBullet("leechblob", self.x, self.y)
+		tp_blob:setLayer(self.layer - 1)
+		tp_blob.attacker = self.attacker
+		tp_blob.damage = self:getDamage()
+		tp_blob:prime() 
+		local boom = Sprite("effects/titan/finisher_explosion", self.x, self.y)
+		boom.rotation = math.rad(0)
+		boom:setOrigin(0.5, 0.5)
+		boom:setScale(0.09375, 0.09375)
+		boom:setLayer(BATTLE_LAYERS["top"])
+		Game.battle.timer:lerpVar(boom, "scale_x", boom.scale_x, boom.scale_x * 3, 4)
+		Game.battle.timer:lerpVar(boom, "scale_y", boom.scale_y, boom.scale_y * 3, 4)
+		boom:setFrame(3)
+		boom:play(1/30, false)
+		Game.battle:addChild(boom)
+
+		Game.battle.timer:after(5/30, function()
+			boom:remove()
+		end)
         return battlers
     end
     return {}
