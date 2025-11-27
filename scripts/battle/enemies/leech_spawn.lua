@@ -96,7 +96,7 @@ end
 
 function LeechSpawn:onAct(battler, name)
 	if name == "Check" then
-        if Game:getTension() >= 64 then
+        if Game:getTension() >= 50 then
             return {
                 "* LEECH SPAWN - AT 27 DF 160\n* The backend darkness that leeches off of your fear.",
                 "* The atmosphere feels tense...\n* (You can use [color:yellow]BANISH[color:reset]!)"
@@ -229,9 +229,9 @@ function LeechSpawn:freeze()
 end
 
 function LeechSpawn:getEncounterText()
-	if Game:getTension() < 64 and MathUtils.randomInt(100) < 4 then
+	if Game:getTension() < 50 and MathUtils.randomInt(100) < 4 then
 		return "* Smells like adrenaline."
-    elseif Game:getTension() >= 64 then 
+    elseif Game:getTension() >= 50 then 
 		return "* The atmosphere feels tense...\n* (You can use [color:yellow]BANISH[color:reset]!)"
 	else
 		return super.getEncounterText(self)
