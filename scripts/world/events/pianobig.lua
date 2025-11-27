@@ -287,6 +287,7 @@ function BigChurchPiano:update()
 
                 --Your Best Friend
 				elseif StringUtils.sub(self.endlessplaylog, i, utf8.len(self.endlessplaylog)) == "ccdecddebm" then
+					Input.clear("menu", true)
 					self.endlessplaylog = ""
 					Game.world:startCutscene("bigpiano.yourbestfriend")
 					break
