@@ -38,7 +38,7 @@ function LeechShapes:onStart()
     end)
 	
 	if self.difficulty >= 3 then
-		self.timer:everyInstant(240/30, function()
+		self.timer:everyInstant(120/30, function()
 			local arena = Game.battle.arena
 			local tempdist = 100 + MathUtils.random(40)
 			local tempdir = math.rad(30 + MathUtils.random(360))
