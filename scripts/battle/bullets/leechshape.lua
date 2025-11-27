@@ -29,7 +29,7 @@ function LeechShape:onDamage(soul)
         soul:onDamage(self, damage)
 		local spin_amt = (Game:getTension()/Game:getMaxTension())*0.25
 		self.wave.spinfactor = self.wave.spinfactor + spin_amt*math.min((1-self.light)+0.25, 1)
-		local tension_loss = math.floor(2*math.min((1-self.light)+0.25, 1) + (8 * (Game:getTension()/Game:getMaxTension())*math.min((1-self.light)+0.25, 1)))
+		local tension_loss = math.floor(4*math.min((1-self.light)+0.25, 1) + (12 * (Game:getTension()/Game:getMaxTension())*math.min((1-self.light)+0.25, 1)))
 		tension_loss = Game:removeTension(tension_loss)
 		local tp_blob = self.wave:spawnBullet("leechblob", self.x, self.y)
 		tp_blob:setLayer(self.layer - 1)
