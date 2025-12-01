@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 9,
-  nextobjectid = 67,
+  nextobjectid = 97,
   properties = {
     ["music"] = "fast-travel"
   },
@@ -28,12 +28,12 @@ return {
     },
     {
       name = "light_areas",
-      firstgid = 281,
+      firstgid = 287,
       filename = "../tilesets/light_areas.tsx"
     },
     {
       name = "tiles_moss",
-      firstgid = 291,
+      firstgid = 297,
       filename = "../tilesets/tiles_moss.tsx"
     }
   },
@@ -87,10 +87,10 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 173, 173, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 173, 173, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 173, 193, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 173, 173, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 191, 162, 173, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 173, 173, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 173, 173, 184, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 201, 202, 202, 202, 202, 202, 202, 202, 202, 202, 202, 203, 171, 173, 173, 174, 202, 202, 202, 202, 202, 202, 202, 202, 203, 0,
+        0, 171, 173, 173, 173, 173, 173, 173, 163, 173, 173, 173, 173, 163, 162, 173, 173, 163, 173, 173, 173, 173, 173, 212, 163, 174, 0,
+        0, 171, 173, 173, 193, 173, 173, 173, 173, 173, 173, 192, 173, 163, 173, 173, 173, 173, 193, 173, 173, 173, 173, 173, 182, 174, 0,
+        0, 221, 222, 222, 222, 222, 222, 222, 222, 222, 222, 222, 223, 211, 173, 173, 213, 221, 222, 222, 222, 222, 222, 222, 222, 223, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 163, 173, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 173, 182, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 171, 173, 173, 174, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -234,7 +234,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3221225763, 1073742115, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3221225769, 1073742121, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -304,7 +304,7 @@ return {
           x = 0,
           y = 0,
           width = 520,
-          height = 1560,
+          height = 1120,
           rotation = 0,
           visible = true,
           properties = {}
@@ -317,7 +317,7 @@ return {
           x = 680,
           y = 0,
           width = 400,
-          height = 1600,
+          height = 1120,
           rotation = 0,
           visible = true,
           properties = {}
@@ -328,9 +328,9 @@ return {
           type = "",
           shape = "rectangle",
           x = 40,
-          y = 1560,
+          y = 1360,
           width = 480,
-          height = 40,
+          height = 240,
           rotation = 0,
           visible = true,
           properties = {}
@@ -344,6 +344,71 @@ return {
           y = 1600,
           width = 40,
           height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 83,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 680,
+          y = 1360,
+          width = 400,
+          height = 240,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 84,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 680,
+          y = 1240,
+          width = 400,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 85,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1040,
+          y = 1280,
+          width = 40,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 87,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 1240,
+          width = 520,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 88,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 1280,
+          width = 40,
+          height = 120,
           rotation = 0,
           visible = true,
           properties = {}
@@ -628,6 +693,159 @@ return {
             ["map"] = "grand_door",
             ["marker"] = "entry_ft"
           }
+        },
+        {
+          id = 74,
+          name = " ",
+          type = "",
+          shape = "rectangle",
+          x = 680,
+          y = 1280,
+          width = 160,
+          height = 160,
+          rotation = 0,
+          gid = 272,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 75,
+          name = " ",
+          type = "",
+          shape = "rectangle",
+          x = 880,
+          y = 1280,
+          width = 160,
+          height = 160,
+          rotation = 0,
+          gid = 272,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 76,
+          name = "shard_door",
+          type = "",
+          shape = "rectangle",
+          x = 700,
+          y = 1250,
+          width = 120,
+          height = 30,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["req"] = "7",
+            ["solid"] = true
+          }
+        },
+        {
+          id = 77,
+          name = "shard_door",
+          type = "",
+          shape = "rectangle",
+          x = 900,
+          y = 1250,
+          width = 120,
+          height = 30,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["req"] = "10",
+            ["solid"] = true
+          }
+        },
+        {
+          id = 91,
+          name = " ",
+          type = "",
+          shape = "rectangle",
+          x = 40,
+          y = 1280,
+          width = 160,
+          height = 160,
+          rotation = 0,
+          gid = 272,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 92,
+          name = " ",
+          type = "",
+          shape = "rectangle",
+          x = 200,
+          y = 1280,
+          width = 160,
+          height = 160,
+          rotation = 0,
+          gid = 272,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 93,
+          name = " ",
+          type = "",
+          shape = "rectangle",
+          x = 360,
+          y = 1280,
+          width = 160,
+          height = 160,
+          rotation = 0,
+          gid = 272,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 94,
+          name = "shard_door",
+          type = "",
+          shape = "rectangle",
+          x = 60,
+          y = 1250,
+          width = 120,
+          height = 30,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "citadel_room",
+            ["map_name"] = "a special place",
+            ["req"] = "0",
+            ["solid"] = true,
+            ["text"] = "* A door. [wait:5]It needs [color:9999ff]no Dark Shards[color:white] to open."
+          }
+        },
+        {
+          id = 95,
+          name = "shard_door",
+          type = "",
+          shape = "rectangle",
+          x = 220,
+          y = 1250,
+          width = 120,
+          height = 30,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["req"] = "9999",
+            ["solid"] = true
+          }
+        },
+        {
+          id = 96,
+          name = "shard_door",
+          type = "",
+          shape = "rectangle",
+          x = 380,
+          y = 1250,
+          width = 120,
+          height = 30,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["req"] = "9999",
+            ["solid"] = true
+          }
         }
       }
     },
@@ -637,7 +855,7 @@ return {
       id = 7,
       name = "objects_lightarea",
       class = "",
-      visible = true,
+      visible = false,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
@@ -655,7 +873,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 283,
+          gid = 289,
           visible = true,
           properties = {
             ["light"] = true,
@@ -674,7 +892,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 283,
+          gid = 289,
           visible = true,
           properties = {
             ["light"] = true,
@@ -693,7 +911,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 2147483931,
+          gid = 2147483937,
           visible = true,
           properties = {
             ["light"] = true,
@@ -728,7 +946,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 283,
+          gid = 289,
           visible = true,
           properties = {
             ["light"] = true,
@@ -747,7 +965,7 @@ return {
           width = 160,
           height = 1980,
           rotation = 0,
-          gid = 2147483931,
+          gid = 2147483937,
           visible = true,
           properties = {
             ["light"] = true,
@@ -805,6 +1023,19 @@ return {
           shape = "point",
           x = 600,
           y = 80,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 90,
+          name = "entry_citadel",
+          type = "",
+          shape = "point",
+          x = 120,
+          y = 1320,
           width = 0,
           height = 0,
           rotation = 0,
