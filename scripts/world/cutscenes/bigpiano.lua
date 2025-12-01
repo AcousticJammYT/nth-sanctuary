@@ -40,4 +40,29 @@ return {
         cutscene:setTextboxTop(false)
         cutscene:text("* Dude,[wait:5] stop messing around!", "teeth_b", "susie")
     end,
+    deox = function (cutscene)
+		local ralsei = cutscene:getCharacter("ralsei")
+		local susie = cutscene:getCharacter("susie")
+		local jamm = cutscene:getCharacter("jamm")
+		local jammf = Game:getFlag("jamm_join")
+		cutscene:setSpeaker(ralsei)
+		if not jamm then
+			cutscene:text("* What a nice song...!", "blush_pleased")
+			cutscene:text("* It feels... [wait:5]calm...", "blush_smile")
+			if jammf then
+				cutscene:text("* You should play this to Jamm, [wait:5]Kris!", "wink")
+			end
+		elseif jamm and jammf then
+			cutscene:setSpeaker(jamm)
+			cutscene:text("* Huh. [wait:10]That's familiar...", "neutral")
+			cutscene:text("* (...Marcy...)", "worried_down")
+			cutscene:setSpeaker(susie)
+			cutscene:text("* You, [wait:5]uh.. [wait:10]alright, [wait:5]dude?", "nervous_side")
+			cutscene:setSpeaker(jamm)
+			cutscene:text("* [speed:0.2]...[speed:1]Yeah,[wait:5] just remembered something, [wait:5][face:look_left]is all.", "neutral")
+			
+		end
+
+		
+	end
 }

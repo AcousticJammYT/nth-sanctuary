@@ -105,7 +105,7 @@ KNOW NO END.</property>
   <object id="10" name="npc" x="520" y="370">
    <properties>
     <property name="actor" value="lobbyman"/>
-    <property name="cutscene" value="lobbyman.four"/>
+    <property name="cutscene" value="lobbyman.proph"/>
    </properties>
    <point/>
   </object>

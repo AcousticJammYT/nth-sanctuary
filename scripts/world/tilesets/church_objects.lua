@@ -23,7 +23,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 26,
+  tilecount = 27,
   tiles = {
     {
       id = 0,
@@ -198,6 +198,12 @@ return {
       image = "../../../assets/sprites/world/objects/treasure_chest_1.png",
       width = 20,
       height = 20
+    },
+    {
+      id = 30,
+      image = "../../../assets/sprites/world/objects/spr_dw_church_organ_large_chair.png",
+      width = 35,
+      height = 15
     }
   }
 }

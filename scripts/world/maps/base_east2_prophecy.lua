@@ -306,7 +306,7 @@ return {
           visible = true,
           properties = {
             ["actor"] = "lobbyman",
-            ["cutscene"] = "lobbyman.four"
+            ["cutscene"] = "lobbyman.proph"
           }
         }
       }

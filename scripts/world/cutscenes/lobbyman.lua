@@ -42,4 +42,11 @@ return {
         choicebox()
         kris:setFacing("down")
     end,
+    proph = function (cutscene)
+        local man = cutscene:getCharacter("lobbyman")
+        cutscene:setSpeaker(man)
+        cutscene:text("* It's nice, [wait:5]isn't it?")
+        cutscene:text("* The pretty green to blue...")
+        cutscene:text("* Good luck, [wait:5]you all.")
+    end,
 }

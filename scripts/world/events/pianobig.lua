@@ -323,6 +323,10 @@ function BigChurchPiano:update()
 					self.endlessplaylog = ""
 					Game.world:startCutscene("bigpiano.misc")
 					break
+				elseif StringUtils.sub(self.endlessplaylog, i, utf8.len(self.endlessplaylog)) == "klncae" then
+					self.endlessplaylog = ""
+					Game.world:startCutscene("bigpiano.deox")
+					break
 				end
 				i = i + 1
 			end
