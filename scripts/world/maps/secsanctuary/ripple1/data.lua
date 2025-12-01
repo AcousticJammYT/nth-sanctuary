@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 18,
-  nextobjectid = 91,
+  nextobjectid = 93,
   properties = {
     ["border"] = "church_b",
     ["music"] = "none"
@@ -813,6 +813,21 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 92,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 480,
+          y = 720,
+          width = 120,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "secsanctuary/ripplepost"
+          }
         }
       }
     },
