@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.11.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 11,
-  nextobjectid = 60,
+  nextobjectid = 62,
   parallaxorigin = {
     x = -320,
     y = -240
@@ -655,6 +655,22 @@ return {
           properties = {
             ["text1"] = "* (You find yourself in a familiar sanctuary...)",
             ["text2"] = "* (You're filled with the power of liminal nostalgia.)"
+          }
+        },
+        {
+          id = 61,
+          name = "interactable",
+          type = "",
+          shape = "rectangle",
+          x = 760,
+          y = 960,
+          width = 40,
+          height = 120,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["solid"] = true,
+            ["text1"] = "* imagine these as dark place dog cones. yeah, theres no more rooms right now."
           }
         }
       }

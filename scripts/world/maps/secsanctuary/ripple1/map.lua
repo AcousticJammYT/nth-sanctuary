@@ -46,6 +46,8 @@ function map:onEnter()
 		window.alpha = 0
 		window.sprite.alpha = 0
 	end
+	self.stupid_hitbox = self:getHitbox("rippleblock") ---@type Hitbox
+	self.stupid_hitbox.collidable = true
 end
 
 function map:onExit()
@@ -128,6 +130,7 @@ function map:update()
 				for _, filter in ipairs(Game.world.map:getEvents("filter")) do
 					filter.visible = true
 				end
+				self.stupid_hitbox.collidable = false
 			end
 		end
 	end

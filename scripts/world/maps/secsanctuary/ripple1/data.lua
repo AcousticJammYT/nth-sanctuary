@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.10.2",
+  tiledversion = "1.11.2",
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 18,
-  nextobjectid = 93,
+  nextobjectid = 94,
   properties = {
     ["border"] = "church_b",
     ["music"] = "none"
@@ -687,6 +687,19 @@ return {
           y = 320,
           width = 40,
           height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 93,
+          name = "rippleblock",
+          type = "",
+          shape = "rectangle",
+          x = 480,
+          y = 680,
+          width = 120,
+          height = 44.1497,
           rotation = 0,
           visible = true,
           properties = {}
