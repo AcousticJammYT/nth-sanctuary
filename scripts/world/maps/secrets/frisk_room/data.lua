@@ -432,7 +432,7 @@ return {
           visible = true,
           properties = {
             ["actor"] = "frisk",
-            ["text"] = "* (Holy shit it's Frisk from UNDERTALE.)"
+            ["cutscene"] = "secrets.frisk"
           }
         },
         {
