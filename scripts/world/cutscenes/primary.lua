@@ -381,7 +381,7 @@ return {
         cutscene:setSpeaker(ral)
         cutscene:text("* (...)", "frown")
         cutscene:attachFollowers()
-        Game:setFlag("noellefall", "true")
+        Game:setFlag("noellefall", true)
     end,
     jamm = function (cutscene)
         local j = cutscene:getCharacter("jamm")
