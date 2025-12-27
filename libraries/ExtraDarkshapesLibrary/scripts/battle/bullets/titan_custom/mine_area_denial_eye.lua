@@ -4,6 +4,8 @@ function MineAreaDenialEye:init(x, y, tx, ty)
     super.init(self, x, y, "battle/bullets/titan_custom/mine_eye")
     --points: x1, y1, x2, y2, x3, y3
 
+    self.tp = 0
+    self.grazed = true
     self.damage = 120
     self:setScale(1, 1)
     self.time = 0
