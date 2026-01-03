@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 14,
-  nextobjectid = 64,
+  nextobjectid = 72,
   properties = {
     ["border"] = "church_b",
     ["music"] = "second_church",
@@ -741,6 +741,32 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 70,
+          name = "j-detour",
+          type = "",
+          shape = "point",
+          x = 920,
+          y = 640,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 71,
+          name = "jammgoesbyebye",
+          type = "",
+          shape = "point",
+          x = 920,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -788,7 +814,7 @@ return {
           properties = {
             ["cutscene"] = "primary.fall",
             ["flagcheck"] = "!noellefall",
-            ["once"] = false
+            ["once"] = true
           }
         },
         {
@@ -844,6 +870,22 @@ return {
           properties = {
             ["map"] = "secsanctuary/second_sanctum_1",
             ["marker"] = "entry"
+          }
+        },
+        {
+          id = 64,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 720,
+          y = 600,
+          width = 40,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "primary.prefall",
+            ["once"] = true
           }
         }
       }

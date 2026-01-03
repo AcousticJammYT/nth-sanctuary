@@ -38,7 +38,11 @@ return {
         local ch = cutscene:choicer({"Pacifist", "Violent", "Weird"})
         
         Game:setFlag("route", ch)
-        Assets.playSound("ui_spooky_action")
+        if ch == 1 or ch == 2 then
+            Assets.playSound("ui_spooky_action")
+        elseif ch == 3 then
+            Assets.playSound("ominous")
+        end
         cutscene:wait(2)
         local remove = {}
         local sum = 85
@@ -313,11 +317,26 @@ return {
         Game.world.timer:after(2, function()sus:remove()end)
         cutscene:startEncounter("titan", true, sus)
     end,
+    prefall = function (cutscene)
+        if Game:hasPartyMember("jamm") then
+            local j = cutscene:getCharacter("jamm")
+            cutscene:setSpeaker(j)
+            cutscene:text("* Hey, [wait:5]you guys can go ahead.", "neutral")
+            cutscene:text("* I think I dropped something.", "neutral")
+            if j.x > 920 and j.y > 640 then
+                cutscene:wait(cutscene:walkTo(j, "j-detour", 1))
+            end
+            Game.lock_movement = false
+            cutscene:walkTo(j, "jammgoesbyebye", 2)
+            j.following = false
+        end
+    end,
     fall = function (cutscene)
         local ral = cutscene:getCharacter("ralsei")
         local sus = cutscene:getCharacter("susie")
         local no = cutscene:getCharacter("noelle")
         local kris = cutscene:getCharacter("kris")
+        local j = cutscene:getCharacter("jamm")
         cutscene:detachFollowers()
         cutscene:setSpeaker("susie")
         cutscene:text("* (Kris, [wait:5]look! [wait:10]It's Noelle!)", "blush")
@@ -387,6 +406,9 @@ return {
         cutscene:text("* (Ralsei, [wait:5]are humans supposed to breathe like that?)", "suspicious")
         cutscene:setSpeaker(ral)
         cutscene:text("* (...)", "frown")
+        if Game:hasPartyMember("jamm") then
+            j.x, j.y = 760, 640
+        end
         cutscene:attachFollowers()
         Game:setFlag("noellefall", true)
     end,
@@ -449,8 +471,15 @@ return {
         cutscene:setSpeaker(j)
         cutscene:text("* [wait:30]..Uuh[wait:3]h[wait:3]h huh.", "suspicious")
         cutscene:text("* How funny. [wait:10]I'm also trying to find my way outta here.", "suspicious")
-        cutscene:text("* You guys don't look like murderers, [wait:5]either...", "look_left")
-        cutscene:text("* Guess my best bet is coming with you.", "neutral")
+        if Game:getFlag("route") == 1 or Game:getFlag("route") == 2 then
+            cutscene:text("* You guys don't look like murderers, [wait:5]either...", "look_left")
+            cutscene:text("* Guess my best bet is coming with you.", "neutral")
+        elseif Game:getFlag("route") == 3 then
+            cutscene:text("* You guys look a little confused.", "look_left")
+            cutscene:text("* Especially you, [wait:5]the one in front.", "look_left")
+            cutscene:text("* Trust me, [wait:5]I also want to get out as quick as possible.", "neutral")
+            cutscene:text("* My best bet is coming with you.", "neutral")
+        end
         cutscene:wait(1/3)
         Game.world.music:pause()
         cutscene:setSpeaker(nil)
