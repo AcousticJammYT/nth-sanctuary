@@ -35,7 +35,8 @@ return {
     {
       name = "ExtraClimbableBrickTiles",
       firstgid = 814,
-      filename = "../../../tilesets/ExtraClimbableBrickTiles.tsx"
+      filename = "../../../tilesets/ExtraClimbableBrickTiles.tsx",
+      exportfilename = "../../../tilesets/ExtraClimbableBrickTiles.tsx"
     }
   },
   layers = {
