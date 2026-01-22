@@ -1,6 +1,6 @@
 local FireOrb, super = Class(Bullet)
 
-function FireOrb:init(x, y, bullets)
+function FireOrb:init(x, y)
     -- Last argument = sprite path
     super.init(self, x, y, "bullets/liieng/fireorb")
 	self:setScale(1)
@@ -9,7 +9,7 @@ function FireOrb:init(x, y, bullets)
 	self.siner = 0
 	self.spdtimer = 0
 	self.speed = 1
-	self.bullets = bullets or 3
+	self.bullets = 3
 	self.speedtarg = 6
 	self.widthmod = 1
 	self.count = count or 1
@@ -44,7 +44,7 @@ function FireOrb:onAdd(parent)
 	Game.battle.timer:after(1/30, function()
 		for j = 1, self.multibul do
 			for i = 1, self.bullets do
-				local bul = self.wave:spawnBullet("guei/holyfire", 0, 0, math.rad((360 / self.bullets) * i-1), 0)
+				local bul = self.wave:spawnBullet("guei/holyfire", 0, 0, math.rad(((360 / self.bullets) * i-1) + (120 * self.index)), 0)
 				bul.basebuldist = self.basebuldist[j]
 				bul.sinbuldist = self.sinbuldist[j]
 				bul.remove_offscreen = false
