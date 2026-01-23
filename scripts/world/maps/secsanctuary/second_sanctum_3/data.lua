@@ -2033,19 +2033,6 @@ return {
           properties = {
             ["generate"] = false
           }
-        },
-        {
-          id = 320,
-          name = "climblanding",
-          type = "",
-          shape = "rectangle",
-          x = 1480,
-          y = 820,
-          width = 200,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {}
         }
       }
     },
