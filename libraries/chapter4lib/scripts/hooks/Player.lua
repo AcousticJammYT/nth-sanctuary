@@ -312,31 +312,27 @@ function Player:processClimbInputs()
 			self.fallingtimer = self.fallingtimer - DTMULT
 			if self.fallingtimer <= 0 then
 				if self.grabon then
-					local climbwater = false
-					for _, water in ipairs(self.world.stage:getObjects(ClimbWater)) do
+					self.grabx = self.remx + (MathUtils.round((self.x - self.remx) / 40) * 40)
+					self.graby = self.remy + (MathUtils.round((self.y - self.remy) / 40) * 40)
+					local climbarea = nil
+					for _, event in ipairs(self.world.stage:getObjects(Event)) do
+						---@cast event Event.climbarea|Event.climbentry
+						-- TODO: Find out where these numbers come from, because it sure isn't the actor
 						local x,y = -17, -37
-						x,y = x + self.x,y + self.y
+						x,y = x + self.grabx,y + self.graby
 						if self.onrotatingtower then
 							x = MathUtils.wrap(x, 0, self.world.width+1)
 						end
 						self.climb_collider.parent = self.parent
 						self.climb_collider.x, self.climb_collider.y = x, y
-						local topy = MathUtils.clamp(water.drawy, water.starty - water.y, water.endy - water.y)
-						local boty = MathUtils.clamp(-40 + (water.scaley * 40) + water.drawy, water.starty - water.y, water.endy - water.y)
-						local width = 40
-						local yoff = 8
-						local adjustment = 0
-						water_collider = Hitbox(water, adjustment + 8, topy + yoff, adjustment + width - 16, boty - topy - 8)
-						if water_collider:collidesWith(self.climb_collider) then
-							climbwater = true
+						if (event.preClimbEnter or event.climbable) and event:collidesWith(self.climb_collider) then
+							if event.climbable then
+								climbarea = event
+							end
 						end
 					end
-					local allowed, obj = self:canClimb(0, 0)
-					if allowed and obj and self.y >= obj.y + 30 and not climbwater then
-						local grabx = self.x
-						local graby = self.y
-						self.grabx = (MathUtils.round(grabx / 40) * 40) - 20
-						self.graby = (MathUtils.round(graby / 40) * 40) + 2
+					Object.endCache()
+					if climbarea then
 						self.grabontimer = 15
 						self.graboncon = 1
 						self.falling = 0
