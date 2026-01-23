@@ -328,7 +328,7 @@
     <property name="generate" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="267" name="climbwaterbucket" x="1400" y="570" width="40" height="40">
+  <object id="267" name="climbwaterbucket" x="1400" y="560" width="40" height="40">
    <properties>
     <property name="generate" type="bool" value="false"/>
    </properties>
