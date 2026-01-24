@@ -733,7 +733,7 @@ return {
           shape = "rectangle",
           x = 80,
           y = 680,
-          width = 70,
+          width = 69,
           height = 40,
           rotation = 0,
           visible = true,

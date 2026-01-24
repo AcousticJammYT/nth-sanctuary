@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="24" height="30" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="121">
  <editorsettings>
-  <export format="lua"/>
+  <export target="data.lua" format="lua"/>
  </editorsettings>
  <properties>
   <property name="border" value="church_a"/>
@@ -129,7 +129,7 @@
   <object id="30" x="149" y="680">
    <polygon points="0,0 40,40 0,40"/>
   </object>
-  <object id="32" x="80" y="680" width="70" height="40"/>
+  <object id="32" x="80" y="680" width="69" height="40"/>
   <object id="33" x="40" y="280" width="40" height="440"/>
   <object id="36" x="40" y="240" width="144" height="40"/>
   <object id="37" x="290" y="240" width="141" height="40"/>
