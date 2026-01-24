@@ -10,10 +10,10 @@ end
 
 function DarkMenu:draw()
     super.draw(self)
-    Draw.setColor(COLORS.black)
-    love.graphics.rectangle("fill",510, 10, 100, 60)
-    Draw.setColor(COLORS.white)
     if not self.description_box.visible then
+		Draw.setColor(COLORS.black)
+		love.graphics.rectangle("fill",510, 10, 100, 60)
+		Draw.setColor(COLORS.white)
         love.graphics.print(Game:getConfig("darkCurrencyShort") .. " " .. Game.money, 520, 10)
         Draw.draw(self.shard_sprite, 520, 46, 0, 2, 2)
 	    local shards = Game:getFlag("shards") or 0
