@@ -24,6 +24,7 @@ function ChurchLanternShrinking:init(data)
 	self.unlit_sprite:setOriginExact(9, 0)
 	self.unlit_sprite:setScale(2)
 	self.unlit_sprite.debug_select = false
+	self:addChild(self.unlit_sprite)
 	self.lit_sprite = Sprite("world/events/churchlantern/lit", -2, -54 - 18)
 	self.lit_sprite:setOriginExact(9, 0)
 	self.lit_sprite:setScale(2)
