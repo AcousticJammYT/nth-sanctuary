@@ -65,8 +65,9 @@ function actor:init()
         ["battle/tactic_freeze_shiny"] 	= {"battle/tactic_freeze_shiny", 1/15, false},
 		
 		-- Cutscene animations
+        ["jump_ball"]                   = {"ball", 1/15, true},
 		["sit"]               			= {"sit", 4/30, true},
-		["pirouette"]    				= {"battle/idle", 3/30, true},
+        ["pirouette"]                   = {"pirouette", 4/30, true},
     }
 
     -- Table of sprite offsets (indexed by sprite name)
@@ -114,9 +115,21 @@ function actor:init()
         ["talk_to_marcy_reach"] = {-7, 13},
         ["talk_to_marcy_relate"] = {-7, 13},
 		
+        ["pirouette"] = {-4, 0},
+
         ["sneak/left"] = {-6, 3},
         ["sneak/right"] = {2, 3},
-        ["pirouette"] = {0, 0},
+
+        --- Climbing offsets
+        ["climb/climb"] = {-4, 8},
+        ["climb/charge"] = {-4, 8},
+        ["climb/slip_left"] = {-4, 8},
+        ["climb/slip_right"] = {-4, 8},
+        ["climb/land_left"] = {-4, 8},
+        ["climb/land_right"] = {-4, 8},
+        ["climb/jump_up"] = {-4, 8},
+        ["climb/jump_left"] = {-4, 8},
+        ["climb/jump_right"] = {-4, 8},
     }
 
     self.mirror_sprites = {
