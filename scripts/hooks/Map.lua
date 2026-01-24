@@ -30,6 +30,11 @@ function Map:load()
 		for e, value in ipairs(self.events_by_name.window_glow or {}) do
 			value:remove()
 		end
+		for e, value in ipairs(self.events_by_name.darkness or {}) do
+			if value.alpha <= 0.2 then
+				value:remove()
+			end
+		end
 	end
 	if Kristal.Config["nthSanctuary/removeHSV"] then
 		for _, h in ipairs(TableUtils.mergeMany(
