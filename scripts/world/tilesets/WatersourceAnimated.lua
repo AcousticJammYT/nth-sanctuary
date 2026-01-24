@@ -1,7 +1,7 @@
 return {
   version = "1.10",
   luaversion = "5.1",
-  tiledversion = "1.11.2",
+  tiledversion = "1.10.2",
   name = "WatersourceAnimated",
   class = "",
   tilewidth = 20,
@@ -11,7 +11,7 @@ return {
   columns = 5,
   image = "../../../assets/sprites/tilesets/WatersourceAnimated.png",
   imagewidth = 100,
-  imageheight = 80,
+  imageheight = 40,
   objectalignment = "unspecified",
   tilerendersize = "grid",
   fillmode = "stretch",
@@ -26,7 +26,7 @@ return {
   },
   properties = {},
   wangsets = {},
-  tilecount = 20,
+  tilecount = 10,
   tiles = {
     {
       id = 5,
@@ -49,56 +49,6 @@ return {
         },
         {
           tileid = 9,
-          duration = 125
-        }
-      }
-    },
-    {
-      id = 10,
-      animation = {
-        {
-          tileid = 10,
-          duration = 125
-        },
-        {
-          tileid = 11,
-          duration = 125
-        },
-        {
-          tileid = 12,
-          duration = 125
-        },
-        {
-          tileid = 13,
-          duration = 125
-        },
-        {
-          tileid = 14,
-          duration = 125
-        }
-      }
-    },
-    {
-      id = 15,
-      animation = {
-        {
-          tileid = 15,
-          duration = 125
-        },
-        {
-          tileid = 16,
-          duration = 125
-        },
-        {
-          tileid = 17,
-          duration = 125
-        },
-        {
-          tileid = 18,
-          duration = 125
-        },
-        {
-          tileid = 19,
           duration = 125
         }
       }
