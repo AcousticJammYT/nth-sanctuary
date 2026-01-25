@@ -9,8 +9,8 @@ return {
   height = 24,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 7,
-  nextobjectid = 18,
+  nextlayerid = 8,
+  nextobjectid = 36,
   properties = {},
   tilesets = {},
   layers = {
@@ -20,7 +20,7 @@ return {
       id = 2,
       name = "objects_bg",
       class = "",
-      visible = true,
+      visible = false,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
@@ -149,6 +149,145 @@ return {
           properties = {
             ["group"] = "lantern"
           }
+        },
+        {
+          id = 18,
+          name = "pathenemygen",
+          type = "",
+          shape = "point",
+          x = 480,
+          y = 640,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["dir"] = 2,
+            ["movetype"] = 3,
+            ["rate"] = 40,
+            ["timer"] = 19
+          }
+        },
+        {
+          id = 19,
+          name = "pathenemyender",
+          type = "",
+          shape = "point",
+          x = 480,
+          y = 400,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 24,
+          name = "pathenemyturner",
+          type = "",
+          shape = "point",
+          x = 480,
+          y = 520,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["dir"] = 3
+          }
+        },
+        {
+          id = 25,
+          name = "pathenemyturner",
+          type = "",
+          shape = "point",
+          x = 200,
+          y = 520,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["dir"] = 2
+          }
+        },
+        {
+          id = 26,
+          name = "pathenemyturner",
+          type = "",
+          shape = "point",
+          x = 200,
+          y = 400,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["dir"] = 1
+          }
+        },
+        {
+          id = 30,
+          name = "lanternshrinking",
+          type = "",
+          shape = "point",
+          x = 280,
+          y = 440,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["group"] = "lantern"
+          }
+        },
+        {
+          id = 31,
+          name = "churchtilebutton",
+          type = "",
+          shape = "rectangle",
+          x = 500,
+          y = 320,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["group"] = "lantern",
+            ["npcpress"] = false,
+            ["offsound"] = 0,
+            ["onsound"] = 0
+          }
+        },
+        {
+          id = 32,
+          name = "lanternshrinking",
+          type = "",
+          shape = "point",
+          x = 520,
+          y = 240,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["group"] = "lantern"
+          }
+        },
+        {
+          id = 34,
+          name = "lanternshrinking",
+          type = "",
+          shape = "point",
+          x = 400,
+          y = 440,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["group"] = "lantern"
+          }
         }
       }
     },
@@ -210,6 +349,35 @@ return {
             ["alpha"] = 1,
             ["highlight"] = false
           }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 7,
+      name = "battleareas",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 35,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 120,
+          y = 360,
+          width = 440,
+          height = 280,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

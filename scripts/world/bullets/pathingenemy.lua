@@ -1,43 +1,32 @@
-local ClimbEnemy, super = Class(Event, "ClimbEnemy")
+local PathingEnemy, super = Class(WorldBullet)
 
-function ClimbEnemy:init(data)
-    super.init(self, data)
-	self.x = self.x + 20
-	self.y = self.y + 20
-    local properties = data and data.properties or {}
-    self:setSprite("world/events/climbenemy/enemy_40")
+function PathingEnemy:init(x, y, properties)
+    super.init(self, x, y, "world/events/climbenemy/enemy_40")
+	self:setScale(1)
+    local properties = properties or {}
 	self.buffer = 0
-	self.sprite:setScale(1)
-	self.sprite:setOrigin(0.5)
-	self:setHitbox(5 - 20, 5 - 20, 30, 30)
+	self:setHitbox(2, 2, 36, 36)
 	self.damagecon = 0
 	self.timer = 0
 	self.bactive = true
-	self.flashadjustmentx = 0
-	self.flashadjustmenty = 0
-	self.effectadjustmentx = 0
-	self.effectadjustmenty = 0
-	self.shakex = 0
-	self.hp = properties["hp"] or 1
-	self.dir = 2
-	self.prefdir = "left"
+	self.hit = 0
+	self.dir = properties["dir"] or 0
+	self.prefdir = properties["prefdir"] or "left"
 	self.neutralcon = 0
-	self.waittimer = MathUtils.randomInt(0, 30)
+	self.waittimer = properties["waittimer"] or 0
 	self.updwait = -1
 	self.ignoreblocked = false
-	self.movetimer = 0
+	self.movetimer = properties["movetimer"] or 0
 	self.updmove = -1
 	self.safex = self.x
 	self.safey = self.y
 	self.lastdir = -1
 	self.failmovecount = 0
 	self.failmovethresh = 4
-	self.movevistype = 0
+	self.movevistype = properties["movevistype"] or 0
 	self.angle = 0
-	self.invincible = properties["invincible"] or false
-	self.damage = properties["damage"] or 30
-	self.hp = properties["hp"] or 1
-	self.waittime = properties["waittime"] or 0
+	self.damage = properties["damage"] or 25
+	self.waittime = properties["waittime"] or 30
 	self.movetime = properties["speed"] or 12
 	self.influenceable = properties["influence"] or true
 	self.homedistance = properties["homedist"] or 120
@@ -46,15 +35,21 @@ function ClimbEnemy:init(data)
     self.speed = properties["speed"] or 12
     self.progress = (properties["progress"] or 0) % 1
     self.reverse_progress = false
+	self.inv_timer = 1
+	self.enemy_collision = true
+	self.alpha = 0
+	self.sprite.visible = false
+	self.animindex = 0
 end
 
-function ClimbEnemy:onAdd(parent)
+function PathingEnemy:onAdd(parent)
     super.onAdd(self, parent)
 
     self:snapToPath()
+	self.sprite.rotation = math.rad(-self.dir * 90)
 end
 
-function ClimbEnemy:snapToPath()
+function PathingEnemy:snapToPath()
     if self.path and self.world.map.paths[self.path] then
         local path = self.world.map.paths[self.path]
 
@@ -83,8 +78,8 @@ function ClimbEnemy:snapToPath()
                         end
                     end
 
-                    self.x = x
-					self.y = y
+                    self.x = x + 20
+					self.y = y + 20
 					self.sprite.rotation = MathUtils.angle(path.points[i].x, path.points[i].y, path.points[i + 1].x, path.points[i + 1].y) - math.rad(90)
                     break
                 else
@@ -105,106 +100,42 @@ function ClimbEnemy:snapToPath()
                 end
             end
 
-            self.x = x
-			self.y = y
+            self.x = x + 20
+			self.y = y + 20
 			self.sprite.rotation = angle
         end
     end
 end
 
-function ClimbEnemy:update()
-    super.update(self)
-	Object.startCache()
-	if Game.world.player:collidesWith(self.collider) then
-		if Game.world.player.climbcon == 2 then
-			if Game.world.player.climb_jumping == 1 then
-				if self.damagecon == 0 then
-					Game.world.player.climbcon = 10
-					Game.world.player.cuttimer = 0
-					if Game.world.player.climb_during_timer then
-						Game.world.timer:pause(Game.world.player.climb_during_timer)
-					end
-					if Game.world.player.climb_after_1_timer then
-						Game.world.timer:pause(Game.world.player.climb_after_1_timer)
-					end
-					if Game.world.player.climb_after_2_timer then
-						Game.world.timer:pause(Game.world.player.climb_after_2_timer)
-					end
-					self.damagecon = 1
-				end
-			elseif Game.world.player.climb_inv_timer <= 0 and Game.world.player:isMovementEnabled() and self.damagecon == 0 then
-				Game.world.player:climbHurtParty(self.damage)
+function PathingEnemy:onDamage(soul)
+    if self:getDamage() > 0 then
+		local remdam = self.damage
+		local lowhp = 999
+		for _, party in ipairs(Game.party) do
+			if party and party:getHealth() < lowhp then
+				lowhp = party:getHealth()
 			end
 		end
-	end
-	Object.endCache()
-	if self.damagecon == 1 then
-		if not self.invincible then
-			self.damagecon = 2
-			self.bactive = false
-		else
-			self.damagecon = 0
+		if lowhp < 120 then
+			self.damage = math.max(MathUtils.round(self.damage * 0.8), 0)
 		end
-		return
-	end
-	if self.damagecon == 2 then
-		self.timer = 0
-		self.color = COLORS.white
-		self:flash()
-		Assets.playSound("ui_cancel", 0.4, 1.2)
-		Assets.playSound("laz_c", 0.3, 1.2)
-		local dmg_sprite = Sprite("effects/attack/cut")
-        dmg_sprite:setOrigin(0.5, 0.5)
-        dmg_sprite:setScale(2, 2)
-        local relative_pos_x, relative_pos_y = self:getRelativePos(-40+self.width / 2, -40+self.height / 2)
-        dmg_sprite:setPosition(relative_pos_x, relative_pos_y)
-        dmg_sprite.layer = self.layer + 1
-        dmg_sprite:play(1 / 15, false, function(s) s:remove() end)
-        Game.world:addChild(dmg_sprite)
-		self:shake()
-		self.hp = self.hp - 1
-		if self.hp > 0 then
-			self.damagecon = 0
-			Game.world.player.falling = 1
-			Game.world.player.fallingtimer = 20
-		else
-			self.damagecon = 3
-		end
-		return
-	end
-	if self.damagecon == 3 then
-		self.timer = self.timer + DTMULT
-		if self.timer >= 8 then
-			local dmg_sprite = Sprite("effects/attack/slap_n")
-			dmg_sprite:setOrigin(0.5, 0.5)
-			dmg_sprite:setScale(2, 2)
-			local relative_pos_x, relative_pos_y = self:getRelativePos(-40+self.width / 2, -40+self.height / 2)
-			dmg_sprite:setPosition(relative_pos_x, relative_pos_y)
-			dmg_sprite.layer = self.layer + 0.01
-			dmg_sprite:play(1 / 15, false, function(s) s:remove() end)
-			Game.world:addChild(dmg_sprite)
-			
-			local dmg_sprite_2 = Sprite("effects/attack/slap_n")
-			dmg_sprite_2:setColor(COLORS.black)
-			dmg_sprite_2:setOrigin(0.5, 0.5)
-			dmg_sprite_2:setScale(2, 2)
-			dmg_sprite_2:setPosition(relative_pos_x, relative_pos_y)
-			dmg_sprite_2.layer = self.layer + 0.01
-			dmg_sprite_2:play(1 / 15, false, function(s) s:remove() end)
-			Game.world:addChild(dmg_sprite_2)
-            local afterimage = AfterImage(dmg_sprite_2, 0.5)
-			dmg_sprite_2:addChild(afterimage)
-			Assets.playSound("ui_cancel", 1, 0.5)
-			Assets.playSound("damage", 0.5, 0.5)
-			Assets.playSound("punchmed", 0.4, 1)
-            local afterimage_2 = AfterImageCutHalf(self.sprite.texture_path)
-			afterimage_2:setPosition(self.x/2, self.y/2)
-			afterimage_2.layer = self.layer
-			afterimage_2:setOriginExact(0, 0)
-			Game.world:addChild(afterimage_2)
+        self.world:hurtParty(self.damage)
+        soul.inv_timer = self.inv_timer
+		self.hit = 1
+		self.damage = remdam
+    end
+end
+
+function PathingEnemy:update()
+    super.update(self)
+	if self.doom then
+		self.alpha = MathUtils.lerp(self.alpha, -0.1, 1/6*DTMULT)
+		
+		if self.alpha <= 0 then
 			self:remove()
-			return
 		end
+	else
+		self.alpha = MathUtils.lerp(self.alpha, 1, 1/6*DTMULT)
 	end
 	if not Game.world.player:isMovementEnabled() then
 		return
@@ -229,7 +160,7 @@ function ClimbEnemy:update()
             end
 
             self:snapToPath()
-			self.sprite:setFrame(math.floor(((Kristal.getTime()*30) / 4) % 3) + 1)
+			self.sprite:setFrame(math.floor(self.animindex % 3) + 1)
 		end
 	else
 		if self.neutralcon == 0 then
@@ -256,7 +187,7 @@ function ClimbEnemy:update()
 				end
 				
 				if self.movetype == 1 then
-					if kris and MathUtils.dist(self.x, self.y, kris.x, kris.y) <= self.homedist then
+					if kris and MathUtils.dist(self.x + 20, self.y + 20, kris.x, kris.y) <= self.homedist then
 						seek = true
 					end
 					
@@ -270,14 +201,26 @@ function ClimbEnemy:update()
 					if not kris then
 						seek = false
 					end
+				end	
+				
+				if self.movetype == 3 then
+					domove = true
+					Object.startCache()
+					self.pathing_collider = Hitbox(self, 20, 20, 40, 40)
+					for _, event in ipairs(self.world.stage:getObjects(Event)) do
+						if event.pathender and event:collidesWith(self.pathing_collider) then
+							self.doom = true
+						end
+					end
+					Object.endCache()
 				end
 
 				if self.influenceable then
 					Object.startCache()
 					local pathturner
 					for _, event in ipairs(self.world.stage:getObjects(Event)) do
-						self.climb_collider = Hitbox(self, 0, 0, 40, 40)
-						if (event.pathturner) and event:collidesWith(self.climb_collider) then
+						self.pathing_collider = Hitbox(self, 20, 20, 40, 40)
+						if (event.pathturner) and event:collidesWith(self.pathing_collider) then
 							if event.pathturner then
 								pathturner = event
 							end
@@ -293,7 +236,7 @@ function ClimbEnemy:update()
 				end
 				if seek then
 					normalpath = false
-					local krisdir = MathUtils.angle(self.x, self.y, kris.x, kris.y)
+					local krisdir = MathUtils.angle(self.x + 20, self.y + 20, kris.x, kris.y)
 					local card = MathUtils.round(math.deg(krisdir) / 90) + 1
 					if card > 3 then
 						card = 0
@@ -335,26 +278,11 @@ function ClimbEnemy:update()
 						end
 						if good[potcard + 1] then
 							Object.startCache()
-							local climbarea
-							local pathturner
-							for _, event in ipairs(self.world.stage:getObjects(Event)) do
-								self.climb_collider = Hitbox(self, px, py, 40, 40)
-								if (event.climbable) and event:collidesWith(self.climb_collider) then
-									if event.climbable then
-										climbarea = event
-									end
-								elseif (event.pathturner) and event:collidesWith(self.climb_collider) then
-									if event.pathturner then
-										pathturner = event
-									end
-								end
-							end
+							self.pathing_collider = Hitbox(self, px, py, 40, 40)
+							local collided, target = self.world:checkCollision(self.pathing_collider, true)
 							Object.endCache()
-							if not climbarea then
+							if collided then
 								good[potcard + 1] = false
-							end
-							if not good[potcard] and pathturner then
-								good[potcard + 1] = true
 							end
 						end
 					end
@@ -408,7 +336,7 @@ function ClimbEnemy:update()
 							if potcard == 3 then
 								px = -40
 							end
-							leftdist = MathUtils.dist(self.x + px, self.y + py, kris.x, kris.y)
+							leftdist = MathUtils.dist(self.x + 20 + px, self.y + 20 + py, kris.x, kris.y)
 							potcard = turnright
 							if potcard == 0 then
 								py = 40
@@ -422,7 +350,7 @@ function ClimbEnemy:update()
 							if potcard == 3 then
 								px = -40
 							end
-							rightdist = MathUtils.dist(self.x + px, self.y + py, kris.x, kris.y)
+							rightdist = MathUtils.dist(self.x + 20 + px, self.y + 20 + py, kris.x, kris.y)
 							if leftdist > rightdist then
 								self.dir = turnright
 								domove = true
@@ -455,20 +383,10 @@ function ClimbEnemy:update()
 							px = -40
 						end
 						Object.startCache()
-						local climbarea
-						local pathturner
-						for _, event in ipairs(self.world.stage:getObjects(Event)) do
-							self.climb_collider = Hitbox(self, px, py, 40, 40)
-							if event.climbable then
-								climbarea = event
-							elseif (event.pathturner) and event:collidesWith(self.climb_collider) then
-								if event.pathturner then
-									pathturner = event
-								end
-							end
-						end
+						self.pathing_collider = Hitbox(self, px, py, 40, 40)
+						local collided, target = self.world:checkCollision(self.pathing_collider, true)
 						Object.endCache()
-						if climbarea or pathturner then
+						if not collided then
 							domove = true
 						end
 						if not domove then
@@ -528,6 +446,19 @@ function ClimbEnemy:update()
 				self.x = MathUtils.lerp(pointAx, pointBx, MathUtils.easeInOutAccurate(prog, 2))
 				self.y = MathUtils.lerp(pointAy, pointBy, MathUtils.easeInOutAccurate(prog, 2))
 			end
+			Object.startCache()
+			self.pathing_collider = Hitbox(self, pointBx, pointBy, 40, 40)
+			local collided, target = self.world:checkCollision(self.pathing_collider, true)
+			Object.endCache()
+			if collided and self.movetype ~= 3 then
+				self.x = self.safex
+				self.y = self.safey
+				self.waittimer = 0
+				self.movetimer = 0
+				self.neutralcon = 0
+				self.lastdir = self.dir
+				self.failmovecount = self.failmovecount + 1
+			end
 			if self.movetimer >= self.movetime then
 				self.failmovecount = 0
 				self.lastdir = self.dir
@@ -545,9 +476,53 @@ function ClimbEnemy:update()
 				end
 			end
 		end
-		self.sprite:setFrame(math.floor(((Kristal.getTime()*30) / 4) % 3) + 1)
+		self.sprite:setFrame(math.floor(self.animindex % 3) + 1)
 		self.sprite.rotation = math.rad(-self.dir * 90)
 	end
 end
 
-return ClimbEnemy
+function PathingEnemy:draw()
+	super.draw(self)
+	local dodraw = false
+    local x, y = self:getScreenPos()
+	local margin = 80
+    if x > -margin and x < SCREEN_WIDTH + margin and y < SCREEN_HEIGHT + margin and y > -margin then
+		dodraw = true
+    end
+	if self.alpha < 0.1 then
+		dodraw = false
+	end
+	if dodraw then
+		self.animindex = self.animindex + 0.25 * DTMULT
+		local player = Game.world.player
+		local px, py = player:getRelativePos(20, 40)
+		local dist = MathUtils.dist(self.x + 20, self.y + 20, px, py)
+		local alpha = (1 - (dist / 80)) * self.alpha
+		local blend = ColorUtils.mergeColor(COLORS.white, COLORS.red, MathUtils.clamp(alpha, 0, 1))
+		local xoff, yoff = 20, 20
+		Draw.setColor(1,1,1,self.alpha)
+		if dist < 80 then
+			local last_shader = love.graphics.getShader()
+			local shader = Kristal.Shaders["AddColor"]
+			love.graphics.setShader(shader)
+			shader:send("inputcolor", COLORS.red)
+			shader:send("amount", 1)
+			Draw.setColor(1,1,1,alpha)
+			Draw.draw(self.sprite.texture, 2 + xoff, yoff, self.sprite.rotation, 1, 1, 20, 20)
+			Draw.draw(self.sprite.texture, -2 + xoff, yoff, self.sprite.rotation, 1, 1, 20, 20)
+			Draw.draw(self.sprite.texture, xoff, 2 + yoff, self.sprite.rotation, 1, 1, 20, 20)
+			Draw.draw(self.sprite.texture, yoff, -2 + yoff, self.sprite.rotation, 1, 1, 20, 20)
+			Draw.setColor(1,1,1,alpha * 0.5)
+			Draw.draw(self.sprite.texture, 4 + xoff, yoff, self.sprite.rotation, 1, 1, 20, 20)
+			Draw.draw(self.sprite.texture, -4 + xoff, yoff, self.sprite.rotation, 1, 1, 20, 20)
+			Draw.draw(self.sprite.texture, xoff, 4 + yoff, self.sprite.rotation, 1, 1, 20, 20)
+			Draw.draw(self.sprite.texture, xoff, -4 + yoff, self.sprite.rotation, 1, 1, 20, 20)
+			love.graphics.setShader(last_shader)
+		end
+		Draw.setColor(blend[1], blend[2], blend[3], self.alpha)
+		Draw.draw(self.sprite.texture, xoff, yoff, self.sprite.rotation, 1, 1, 20, 20)
+		Draw.setColor(1,1,1,1)
+	end
+end
+
+return PathingEnemy

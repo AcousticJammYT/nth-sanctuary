@@ -1,6 +1,6 @@
-local ClimbEnemyTurner, super = Class(Event, "ClimbEnemyTurner")
+local PathEnemyTurner, super = Class(Event, "PathEnemyTurner")
 
-function ClimbEnemyTurner:init(data)
+function PathEnemyTurner:init(data)
     super.init(self, data)
     local properties = data and data.properties or {}
     self.dir = properties["dir"] or 0
@@ -8,4 +8,4 @@ function ClimbEnemyTurner:init(data)
 	self.pathturner = true
 end
 
-return ClimbEnemyTurner
+return PathEnemyTurner
