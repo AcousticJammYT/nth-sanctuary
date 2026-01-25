@@ -21,7 +21,8 @@ function NymphSpawn:onTurnEnd()
 	self.light_radius = 48
     self.difficulty = self.difficulty + 1
 end
-
+-- this makes jamm and noelle go ontop of ral(sei) so if you wanna fix this you can, but i dont think i wanna rn.
+--[[
 function NymphSpawn:getPartyPosition(index)
     local krloc = {94, 50}
     local suloc = {80, 122}
@@ -44,7 +45,7 @@ function NymphSpawn:getPartyPosition(index)
         return super.getPartyPosition(self, index)
     end
 end
-
+]]
 function NymphSpawn:onBattleStart(battler)
 	if Game:hasPartyMember("kris") then
 		self.default_xactions = false
