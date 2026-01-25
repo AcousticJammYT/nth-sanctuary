@@ -79,11 +79,14 @@ function ChurchTileButton:onPressed()
 			Assets.stopAndPlaySound(self.on_sound)
 		end
     end
-	if self.do_ripple then
-		self.world:addChild(RippleEffect(self.x + self.width/2, self.y + self.height/2, 50, 460, 10, {1, 1, 0}, 0, 0, 1));
-		self.world:addChild(RippleEffect(self.x + self.width/2, self.y + self.height/2, 50, 380, 10, {1, 1, 0}, 0, 0, 1));
-		self.world:addChild(RippleEffect(self.x + self.width/2, self.y + self.height/2, 50, 320, 10, {1, 1, 0}, 0, 0, 1));
-		self.world:addChild(RippleEffect(self.x + self.width/2, self.y + self.height/2, 50, 240, 10, {1, 1, 0}, 0, 0, 1));
+	if self.do_ripple and Game.world.map.ripple_fx then
+		local ripple_fx = Game.world.map.ripple_fx
+		local player = Game.world.player
+		local x, y = player:getRelativePos(18/2, 72/2)
+		ripple_fx:makeRipple(x, y, 120, COLORS.yellow, 460, 1, 15, 1999000)
+		ripple_fx:makeRipple(x, y, 120, COLORS.yellow, 380, 1, 15, 1999000)
+		ripple_fx:makeRipple(x, y, 120, COLORS.yellow, 320, 1, 15, 1999000)
+		ripple_fx:makeRipple(x, y, 120, COLORS.yellow, 240, 1, 15, 1999000)
 	end
 end
 

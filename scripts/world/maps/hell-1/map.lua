@@ -6,13 +6,18 @@ function map:init(world, data)
 	self.riptimer = 119
 end
 
+function map:onEnter()
+	self.ripple_fx = RippleEffect()
+	self.ripple_fx.layer = WORLD_LAYERS["bottom"]
+	Game.world:addChild(self.ripple_fx)
+end
+
 function map:update(world, data)
 	for _,enemy in ipairs(Game.stage:getObjects(ChaserEnemy)) do
 		for _,ripplefloor in ipairs(Game.world.map:getEvents("ripplefloor")) do
 			if enemy:collidesWith(ripplefloor.collider) and self.riptimer >= 120 then
-				local effect = RippleEffect(enemy, COLORS.red)
 				local x, y = enemy:getRelativePos(enemy.width/2, enemy.height/2)
-				RippleEffect:MakeRipple(x, y, 60, COLORS.red, 120, 1, 10)
+				self.ripple_fx:makeRipple(x, y, 60, COLORS.red, 120, 1, 10)
 				self.riptimer = 0
 			end
 		end
@@ -32,17 +37,11 @@ function map:onFootstep(char, num)
 	if make_steps then
 		Assets.playSound("step1", 1, 0.8)
 		---@type RippleEffect
-		local effect = RippleEffect(char, {Game.party[1]:getColor()})
 		local x, y = char:getRelativePos(18/2, 72/2)
 		-- TODO: I couldn't find the right numbers
-		if Input.down("cancel") then
-			RippleEffect:MakeRipple(x,y, 60, {74/255, 145/255, 246/255}, 192, 1, 15):applySpeedFrom(char, 0.75)
-		else
-			-- RippleEffect:MakeRipple(x,y, 30, nil, 192/2, 1, 8):applySpeedFrom(char, 0.75)
-			-- RippleEffect:MakeRipple(x,y, 30, nil, 192/3, 1, 8):applySpeedFrom(char, 0.75)
-			self.world:addChild(RippleEffect(x, y, 30, 192/2, 8, {74/255, 145/255, 246/255})):applySpeedFrom(char, 0.75)
-			self.world:addChild(RippleEffect(x, y, 30, 192/3, 8, {74/255, 145/255, 246/255})):applySpeedFrom(char, 0.75)
-		end
+		local sizemod = 1
+		self.ripple_fx:makeRipple(x,y, 60, ColorUtils.hexToRGB("#4A91F6"), 220 * sizemod, 1, 18 * sizemod, 1999000, Game.world.player.moving_x * 1.05, Game.world.player.moving_y * 1.05)
+		self.ripple_fx:makeRipple(x,y, 60, ColorUtils.hexToRGB("#4A91F6"), 140 * sizemod, 1, 15 * sizemod, 1999000, Game.world.player.moving_x * 1.05, Game.world.player.moving_y * 1.05)
 	end
 end
 
