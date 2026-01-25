@@ -5,7 +5,7 @@
  </editorsettings>
  <properties>
   <property name="border" value="church_b"/>
-  <property name="music" value="homebase"/>
+  <property name="music" value="second_church"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/bg_dw_church_2_tileset.tsx"/>
  <tileset firstgid="199" source="../../../tilesets/bg_dw_church_tileset_new.tsx"/>
@@ -275,13 +275,13 @@
   </object>
   <object id="130" name="interactable" x="840" y="640" width="40" height="40">
    <properties>
-    <property name="text1">	  East: Flooded Sanctum
+    <property name="text1">	Southeast: Flooded Sanctum
      South: Second Sanctuary</property>
    </properties>
   </object>
   <object id="135" name="transition" x="1720" y="1160" width="40" height="160">
    <properties>
-    <property name="map" value="base_sanctum_center"/>
+    <property name="map" value="floodedsanctuary/between"/>
     <property name="marker" value="entry2"/>
    </properties>
   </object>

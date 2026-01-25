@@ -13,7 +13,7 @@ return {
   nextobjectid = 137,
   properties = {
     ["border"] = "church_b",
-    ["music"] = "homebase"
+    ["music"] = "second_church"
   },
   tilesets = {
     {
@@ -24,8 +24,7 @@ return {
     {
       name = "bg_dw_church_tileset_new",
       firstgid = 199,
-      filename = "../../../tilesets/bg_dw_church_tileset_new.tsx",
-      exportfilename = "../../../tilesets/bg_dw_church_tileset_new.lua"
+      filename = "../../../tilesets/bg_dw_church_tileset_new.tsx"
     },
     {
       name = "bg_dw_church_watertileset",
@@ -1087,7 +1086,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["text1"] = "	  East: Flooded Sanctum\n     South: Second Sanctuary"
+            ["text1"] = "	Southeast: Flooded Sanctum\n     South: Second Sanctuary"
           }
         },
         {
@@ -1102,7 +1101,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["map"] = "base_sanctum_center",
+            ["map"] = "floodedsanctuary/between",
             ["marker"] = "entry2"
           }
         }

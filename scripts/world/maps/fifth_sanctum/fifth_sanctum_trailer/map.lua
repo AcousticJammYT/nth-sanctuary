@@ -11,11 +11,14 @@ function map:init(world, data)
             local marker4 = self.markers["top_down_shoot2"]
             local marker5 = self.markers["top_down_shoot3"]
             local marker6 = self.markers["top_down_shoot4"]
-            self.world:spawnBullet("smallbullet", marker3.center_x,marker3.center_y, false, true)
-            self.world:spawnBullet("smallbullet", marker4.center_x,marker4.center_y, false, true)
-            self.world:spawnBullet("smallbullet", marker5.center_x,marker5.center_y, false, true)
-            self.world:spawnBullet("smallbullet", marker6.center_x,marker6.center_y, false, true)
-            
+            local new1 = self.world:spawnBullet("smallbullet", marker3.center_x,marker3.center_y, false, true)
+            local new2 = self.world:spawnBullet("smallbullet", marker4.center_x,marker4.center_y, false, true)
+            local new3 = self.world:spawnBullet("smallbullet", marker5.center_x,marker5.center_y, false, true)
+            local new4 = self.world:spawnBullet("smallbullet", marker6.center_x,marker6.center_y, false, true)
+            new1:addFX(OutlineFX()):setColor(Utils.unpackColor(Utils.hexToRgb("#ff0000")))
+            new2:addFX(OutlineFX()):setColor(Utils.unpackColor(Utils.hexToRgb("#ff0000")))
+            new3:addFX(OutlineFX()):setColor(Utils.unpackColor(Utils.hexToRgb("#ff0000")))
+            new4:addFX(OutlineFX()):setColor(Utils.unpackColor(Utils.hexToRgb("#ff0000")))
         end
     end)
 end
