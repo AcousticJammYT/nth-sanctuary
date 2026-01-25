@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="40" tileheight="40" infinite="0" nextlayerid="17" nextobjectid="61">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="40" tileheight="40" infinite="0" nextlayerid="17" nextobjectid="62">
  <editorsettings>
   <export target="data.lua" format="lua"/>
  </editorsettings>
@@ -10,8 +10,8 @@
  <tileset firstgid="1" source="../../tilesets/bg_dw_church_tileset_new.tsx"/>
  <tileset firstgid="583" source="../../tilesets/castle.tsx"/>
  <tileset firstgid="623" source="../../tilesets/church_objects.tsx"/>
- <tileset firstgid="650" source="../../tilesets/bg_dw_church_2_tileset.tsx"/>
- <tileset firstgid="848" source="../../tilesets/bg_dw_dither_overlay_tileset.tsx"/>
+ <tileset firstgid="706" source="../../tilesets/bg_dw_church_2_tileset.tsx"/>
+ <tileset firstgid="904" source="../../tilesets/bg_dw_dither_overlay_tileset.tsx"/>
  <layer id="5" name="Tile Layer 4" width="30" height="20" parallaxx="0.4" parallaxy="0.85">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -104,18 +104,18 @@
 0,0,0,310,311,312,307,308,309,310,311,312,307,308,309,310,311,312,367,409,410,411,367,308,307,308,309,0,0,0,
 0,0,0,365,366,74,74,74,378,74,74,74,74,353,354,74,74,74,74,74,74,378,74,74,74,475,476,0,0,0,
 0,0,0,371,372,377,74,74,74,74,74,74,74,359,360,74,74,74,74,74,74,74,74,74,74,477,377,0,0,0,
-0,0,0,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,74,74,476,677,677,677,677,677,0,0,0,
+0,0,0,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,74,74,476,733,733,733,733,733,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,74,74,74,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,475,74,74,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,135,74,74,74,353,354,74,478,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,135,141,74,74,74,359,360,74,74,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,135,141,147,677,677,677,677,677,74,74,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,135,141,147,733,733,733,733,733,74,74,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,135,141,147,158,436,344,345,346,436,74,74,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,135,141,147,158,159,442,350,351,352,442,74,478,74,74,353,354,74,475,365,366,
 0,0,0,0,0,0,0,0,0,135,141,147,158,159,0,442,356,357,358,442,378,74,74,74,359,360,74,477,371,372,
-74,74,74,74,74,378,74,74,74,141,147,158,159,0,0,442,362,363,364,442,677,677,677,677,677,677,677,677,677,677,
+74,74,74,74,74,378,74,74,74,141,147,158,159,0,0,442,362,363,364,442,733,733,733,733,733,733,733,733,733,733,
 74,477,74,74,74,74,74,74,74,147,158,159,0,0,0,442,368,369,370,442,481,482,483,484,436,481,482,483,484,436,
-677,677,677,677,677,677,677,677,677,158,159,0,0,0,0,473,0,0,0,473,487,488,489,490,442,487,488,489,490,442
+733,733,733,733,733,733,733,733,733,158,159,0,0,0,0,473,0,0,0,473,487,488,489,490,442,487,488,489,490,442
 </data>
  </layer>
  <objectgroup id="6" name="markers">
@@ -166,6 +166,11 @@
     <property name="marker" value="entry"/>
    </properties>
   </object>
+  <object id="61" name="interactable" x="760" y="200" width="120" height="40">
+   <properties>
+    <property name="text1" value="this isnt finished yet uhhh yeah deltarune chapter 5 tomorrow!"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#55aa00" id="7" name="collision">
   <object id="5" x="0" y="600" width="360" height="80"/>
@@ -176,7 +181,7 @@
   <object id="10" x="120" y="320" width="640" height="120"/>
   <object id="11" x="880" y="320" width="200" height="120"/>
   <object id="12" x="1080" y="200" width="40" height="160"/>
-  <object id="14" x="880" y="200" width="200" height="40"/>
+  <object id="14" x="760" y="200" width="320" height="40"/>
   <object id="15" x="120" y="200" width="640" height="40"/>
   <object id="16" x="80" y="240" width="40" height="120"/>
   <object id="17" x="361.333" y="678.667">
