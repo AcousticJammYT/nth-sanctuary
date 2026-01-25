@@ -5,7 +5,7 @@
  </editorsettings>
  <properties>
   <property name="border" value="church_b"/>
-  <property name="music" value="homebase"/>
+  <property name="music" value="second_church"/>
  </properties>
  <tileset firstgid="1" source="../../../tilesets/bg_dw_church_2_tileset.tsx"/>
  <tileset firstgid="199" source="../../../tilesets/bg_dw_church_tileset_new.tsx"/>

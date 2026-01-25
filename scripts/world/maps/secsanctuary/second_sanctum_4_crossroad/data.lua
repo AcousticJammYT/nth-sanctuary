@@ -13,7 +13,7 @@ return {
   nextobjectid = 137,
   properties = {
     ["border"] = "church_b",
-    ["music"] = "homebase"
+    ["music"] = "second_church"
   },
   tilesets = {
     {
@@ -24,8 +24,7 @@ return {
     {
       name = "bg_dw_church_tileset_new",
       firstgid = 199,
-      filename = "../../../tilesets/bg_dw_church_tileset_new.tsx",
-      exportfilename = "../../../tilesets/bg_dw_church_tileset_new.lua"
+      filename = "../../../tilesets/bg_dw_church_tileset_new.tsx"
     },
     {
       name = "bg_dw_church_watertileset",
