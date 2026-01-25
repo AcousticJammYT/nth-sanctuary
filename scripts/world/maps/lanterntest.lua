@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 8,
-  nextobjectid = 36,
+  nextobjectid = 37,
   properties = {},
   tilesets = {},
   layers = {
@@ -107,6 +107,24 @@ return {
           type = "",
           shape = "rectangle",
           x = 140,
+          y = 320,
+          width = 40,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["group"] = "lantern",
+            ["npcpress"] = false,
+            ["offsound"] = 0,
+            ["onsound"] = 0
+          }
+        },
+        {
+          id = 36,
+          name = "churchtilebutton",
+          type = "",
+          shape = "rectangle",
+          x = 500,
           y = 320,
           width = 40,
           height = 40,
@@ -239,24 +257,6 @@ return {
           visible = true,
           properties = {
             ["group"] = "lantern"
-          }
-        },
-        {
-          id = 31,
-          name = "churchtilebutton",
-          type = "",
-          shape = "rectangle",
-          x = 500,
-          y = 320,
-          width = 40,
-          height = 40,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["group"] = "lantern",
-            ["npcpress"] = false,
-            ["offsound"] = 0,
-            ["onsound"] = 0
           }
         },
         {
