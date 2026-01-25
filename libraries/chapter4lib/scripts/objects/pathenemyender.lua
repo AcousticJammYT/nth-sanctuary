@@ -5,4 +5,8 @@ function PathEnemyEnder:init(data)
 	self.pathender = true
 end
 
+function PathEnemyEnder:getDebugRectangle()
+    return {-5, -5, 10, 10}
+end
+
 return PathEnemyEnder

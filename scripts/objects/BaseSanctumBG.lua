@@ -10,6 +10,7 @@ function BaseSanctumBG:init()
     self.spr = Assets.getTexture("world/parallax/base_sanctum_path")
     self.bg_speed = 0
     self.bg_speed_max = 0.05
+	self.debug_select = false
 end
 
 function BaseSanctumBG:draw()

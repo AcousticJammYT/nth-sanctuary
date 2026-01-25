@@ -21,6 +21,10 @@ function PathingEnemyGenerator:init(data)
     self.progress = (properties["progress"] or 0) % 1
 end
 
+function PathingEnemyGenerator:getDebugRectangle()
+    return {-5, -5, 10, 10}
+end
+
 function PathingEnemyGenerator:update()
     super.update(self)
 	

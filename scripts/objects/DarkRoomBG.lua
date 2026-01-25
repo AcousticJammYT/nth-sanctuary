@@ -10,6 +10,7 @@ function DarkRoomBG:init()
     self.window = Assets.getTexture("world/parallax/darksmallwindow")
     self.grad = Assets.getTexture("world/parallax/whitegradientdown_40")
 	self.siner = 0
+	self.debug_select = false
 end
 
 function DarkRoomBG:draw()

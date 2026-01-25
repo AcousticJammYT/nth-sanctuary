@@ -34,6 +34,10 @@ function ChurchLanternShrinking:init(data)
 	self:addChild(self.lit_sprite)
 end
 
+function ChurchLanternShrinking:getDebugRectangle()
+    return {-18, -30, 30, 52}
+end
+
 function ChurchLanternShrinking:easeInOutExpo(t, b, c, d)
     t = t / d * 2
     if t < 1 then

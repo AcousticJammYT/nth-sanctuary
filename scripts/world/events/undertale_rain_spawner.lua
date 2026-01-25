@@ -3,6 +3,7 @@ local UndertaleRainSpawner, super = Class(Event, "undertale_rain_spawner")
 function UndertaleRainSpawner:init(data)
     super.init(self, data)
 	self.timer = 0
+	self.debug_select = false
 end
 
 function UndertaleRainSpawner:update()

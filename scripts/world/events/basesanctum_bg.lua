@@ -1,12 +1,14 @@
-local basesanctum_bg, super = Class(Event)
+local BaseSanctumBGEvent, super = Class(Event)
 
-function basesanctum_bg:init(data)
-    local map = Game.world.map
-    function map:onEnter()
-        Game.world:spawnObject(BaseSanctumBG(), "objects_bg")
-
-    end
+function BaseSanctumBGEvent:init(data)
     super.init(self, data)
+	self.debug_select = false
 end
 
-return basesanctum_bg
+function BaseSanctumBGEvent:onAdd(parent)
+    super.onAdd(self, parent)
+	Game.world:spawnObject(BaseSanctumBG(), "objects_bg")
+	self:remove()
+end
+
+return BaseSanctumBGEvent

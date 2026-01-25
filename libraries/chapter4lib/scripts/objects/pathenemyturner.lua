@@ -8,4 +8,8 @@ function PathEnemyTurner:init(data)
 	self.pathturner = true
 end
 
+function PathEnemyTurner:getDebugRectangle()
+    return {-5, -5, 10, 10}
+end
+
 return PathEnemyTurner

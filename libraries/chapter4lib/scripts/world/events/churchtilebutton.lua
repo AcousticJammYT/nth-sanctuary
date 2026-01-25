@@ -59,6 +59,7 @@ function ChurchTileButton:update()
 				glowspr:remove()
 			end)
 			glowspr.darkness_unlit = true
+			glowspr.debug_select = false
 			Game.world:addChild(glowspr)
 			self.glow_timer = 0
 		end
