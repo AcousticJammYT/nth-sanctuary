@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 19,
-  nextobjectid = 137,
+  nextobjectid = 141,
   properties = {
     ["border"] = "church_b",
     ["music"] = "second_church"
@@ -24,7 +24,8 @@ return {
     {
       name = "bg_dw_church_tileset_new",
       firstgid = 199,
-      filename = "../../../tilesets/bg_dw_church_tileset_new.tsx"
+      filename = "../../../tilesets/bg_dw_church_tileset_new.tsx",
+      exportfilename = "../../../tilesets/bg_dw_church_tileset_new.lua"
     },
     {
       name = "bg_dw_church_watertileset",
