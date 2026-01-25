@@ -107,7 +107,7 @@ function map:update()
 				end
 				local hhsp = -math.cos(masterdir) * 2
 				local vvsp = -math.sin(masterdir) * 2
-				self.ripple_fx_alt:makeRipple(loc[self.ripindex+1].x,loc[self.ripindex+1].y, 60, {1,1,1}, 200, 1, 14, -5, hhsp, vvsp, 0.25)
+				self.ripple_fx_alt:makeRipple(loc[self.ripindex+1].x,loc[self.ripindex+1].y, 60, COLORS.white, 200, 1, 14, -5, hhsp, vvsp, 0.25)
 				self.ripindex = self.ripindex + 1
 				if self.ripindex > #loc-1 then
 					self.ripindex = 0
