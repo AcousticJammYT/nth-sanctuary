@@ -18,7 +18,7 @@ function LavaWaverBG:draw()
 	self.shader:send("wave_mag", 6)
 	self.shader:send("wave_height", 10)
 	self.shader:send("texsize", { SCREEN_WIDTH, SCREEN_HEIGHT })
-	self.alpha = 0.5 + self.world.map.lava_alpha
+	self.alpha = 0.80 + self.world.map.lava_alpha
 	love.graphics.setShader(self.shader)
 	Draw.drawWrapped(lava_canvas, true, true)
 	love.graphics.setShader()
