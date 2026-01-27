@@ -58,7 +58,6 @@ end
 
 function map:update(world, data)
 	if Game:getFlag("shownfloodedmusic") then
-		print(self.con)
 		super.update(self)
 		if self.con == 1 then
 			self.dtmult_timer = self.dtmult_timer + DTMULT
@@ -121,12 +120,10 @@ end
 function map:onFootstep(char, num)
     if not char.is_player then return end
 	if Game:getFlag("ripplestop") then return end
-	if self.frame_timer < 445 then
+	--[[if self.frame_timer < 445 then
 		Assets.playSound("step1", 1, 0.8)
-	end
-    ---@type RippleEffect
+	end]]
     local x, y = char:getRelativePos(18/2, 72/2)
-    -- TODO: I couldn't find the right numbers
 	local sizemod = 1
 	if self.frame_timer < 445 then
 		self.ripple_fx:makeRipple(x, y, 60, ColorUtils.hexToRGB("#4A91F6"), 220 * sizemod, 1, 18 * sizemod, 1999000, Game.world.player.moving_x * 1.05, Game.world.player.moving_y * 1.05)
