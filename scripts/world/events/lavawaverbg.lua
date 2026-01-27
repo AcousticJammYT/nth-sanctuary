@@ -10,6 +10,7 @@ end
 
 function LavaWaverBG:draw()
     super.draw(self)
+	if self.world.color == COLORS.black then return	end
 	local lava_canvas = Draw.pushCanvas(SCREEN_WIDTH, SCREEN_HEIGHT)
 	Draw.drawWrapped(self.bg_tex, true, true)
 	Draw.popCanvas(true)
@@ -17,7 +18,7 @@ function LavaWaverBG:draw()
 	self.shader:send("wave_mag", 6)
 	self.shader:send("wave_height", 10)
 	self.shader:send("texsize", { SCREEN_WIDTH, SCREEN_HEIGHT })
-	self.alpha = 0.5 + (math.sin((Kristal.getTime() * 30) / 12) * 0.3)
+	self.alpha = 0.5 + self.world.map.lava_alpha
 	love.graphics.setShader(self.shader)
 	Draw.drawWrapped(lava_canvas, true, true)
 	love.graphics.setShader()

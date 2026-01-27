@@ -12,6 +12,8 @@ function map:init(world, data)
 		self.fakefader = Rectangle(0,0,999,999)
 		self.fakefader.alpha = 0
 	end
+	self.lava_alpha = 0.5 + (math.sin((Kristal.getTime() * 30) / 12) * 0.3)
+	self.lava_grad_scale = (math.sin((Kristal.getTime() * 30) / 12) * 0.5)
 end
 
 function map:onEnter()
@@ -59,6 +61,8 @@ end
 function map:update(world, data)
 	if Game:getFlag("shownfloodedmusic") then
 		super.update(self)
+		self.lava_alpha = (math.sin((Kristal.getTime() * 30) / 12) * 0.3)
+		self.lava_grad_scale = (math.sin((Kristal.getTime() * 30) / 12) * 0.5)
 		if self.con == 1 then
 			self.dtmult_timer = self.dtmult_timer + DTMULT
 			if self.dtmult_timer >= 1 then
