@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 19,
-  nextobjectid = 153,
+  nextobjectid = 154,
   properties = {
     ["border"] = "church_b",
     ["music"] = "second_church"
@@ -1216,6 +1216,22 @@ return {
           visible = true,
           properties = {
             ["prophecy"] = true
+          }
+        },
+        {
+          id = 153,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 160,
+          y = 1720,
+          width = 160,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "secsanctuary/second_sanctum_5",
+            ["marker"] = "entry"
           }
         }
       }
