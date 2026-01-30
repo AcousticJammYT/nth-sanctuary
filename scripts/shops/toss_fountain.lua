@@ -17,6 +17,7 @@ function TossFountain:init()
     -- Shown when you enter the talk menu.
     self.talk_text = ""
 
+    self.fun = Game:getFlag("fun")
     self.sell_options = {
         { "Toss unwanted item", "items" },
         { "Toss unwanted weapon", "weapons" },
@@ -34,8 +35,35 @@ function TossFountain:init()
 	self.bg_cover.visible = false
     self.menu_options = {
         {"Toss", "SELLMENU"},
+        {"Drink", "READNOTE"},
         {"Exit", "LEAVE"}
     }
+
+    self.note = {}
+end
+
+function TossFountain:getNote()
+    local text
+    if not Game:getFlag("drink_from_basin") or Game:getFlag("drink_from_basin") < 8 then
+        Game:addFlag("drink_from_basin", 1)
+        if self.fun <= 100 and self.fun >= 90 and love.math.random(0,10) == 10 then
+            return {
+                "[sound:swallow]* (You drawnk from the basin...)",
+                "* (Yummers.)"
+            }
+        end
+            return {
+            "[sound:swallow]* (You drank from the basin...)",
+            "* (You feel ever so slightly heavier.)"
+        }
+    end
+    if Game:getFlag("waterboarded") then
+        return {
+            "* (You drank too much as is.)",
+            "* (Any more and you might just turn into coins. [wait:10]For real.)",
+        }
+    end
+    self:startCutscene("shops.fountain")
 end
 
 function TossFountain:onLeave()
