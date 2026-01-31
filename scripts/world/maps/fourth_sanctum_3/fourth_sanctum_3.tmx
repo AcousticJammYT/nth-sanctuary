@@ -126,7 +126,7 @@
    <point/>
   </object>
  </objectgroup>
- <layer id="18" name="roomglow_dark_bg" width="20" height="34">
+ <layer id="18" name="roomglow_dark_bg" width="20" height="34" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

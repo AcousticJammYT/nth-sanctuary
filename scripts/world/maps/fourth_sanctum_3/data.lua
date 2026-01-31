@@ -439,7 +439,7 @@ return {
       id = 18,
       name = "roomglow_dark_bg",
       class = "",
-      visible = true,
+      visible = false,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
