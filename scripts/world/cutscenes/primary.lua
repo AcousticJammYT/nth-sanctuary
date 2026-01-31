@@ -188,14 +188,18 @@ return {
 				letter.layer = 1000
 				letter.alpha = 0
 				Game.world:addChild(letter)
-				Game.world.timer:tween(0, letter, {alpha = 1})
+				Game.world.timer:tween(0.5, letter, {alpha = 1})
 				letter.x = sum
 				letter.y = SCREEN_HEIGHT/2
 				--Assets.playSound("noise")
-				cutscene:wait(0.31578947368421052631578947368421052631578947368421052631578947368421052631578947368421052631578947368421052631578947368421052631578947368421052631578947368421052631578947368421052631578947368421052632)
+				cutscene:wait(1/10)
 				sum = sum + (letter.width*2) + 12
 				table.insert(remove, letter)
-			end 
+			end
+			--ok look i know you might be mad at this code but lucid made it so much fucking harder than it had to be, okay? EDIT: ok jamm thank you for not making me do the terrible numbers. -mason
+			for i = 1,9 do
+				cutscene:wait(12/38-1/10)
+			end
 			local heart = Sprite("logo_heart")
 			heart:setScale(2)
 			heart:setParallax(0)
@@ -209,7 +213,7 @@ return {
 			grad:setScale(2)
 			grad:setParallax(0)
 			grad:setOrigin(0.5, 0.5)
-			grad:setColor(Utils.hexToRgb("#ffffff"))
+			grad:setColor(COLORS.white)
 			grad.layer = 1000 + 1
 			grad.noprop = true
 			grad.alpha = 0
@@ -496,11 +500,14 @@ return {
 			arch:setColor(COLORS.black)
 			Game.world:addChild(arch)
 			Game.world.timer:tween(4/30, arch, {y = 0}, "linear")
-			cutscene:wait(8/30)
+			cutscene:wait(20/30)
+			windsfx:stop()
+			cutscene:wait(10/30)
 			windows:remove()
 			prophecies:remove()
 			broken_container:remove()
-			windsfx:stop()
+			cutscene:wait(10/30)
+			cutscene:wait(0/30)
 			Assets.playSound("snd_closet_impact")
 			kris:setParallax(1)
 			susie:setParallax(1)
@@ -580,7 +587,7 @@ return {
         cutscene:wait(1) 
         susie:setFacing("up")
         cutscene:wait(1)
-        cutscene:text("* Kris,[wait:5][func:turn0][wait:5] you're...[wait:10][func:turn] green?[wait:10] And I'm...[wait:10] uh...[wait:10][react:1]", "suspicious", {
+        cutscene:text("* Kris,[wait:5][func:turn0][wait:5] you're...[wait:10][func:turn] green?[wait:10] And I'm...[wait:10] uh...[wait:5][react:1]", "suspicious", {
             reactions = {
                 {"(Uhh... hey, Kris!\nHelp me out here!)", "right", "bottom", "blush", "susie"},
             },
@@ -594,13 +601,20 @@ return {
             },
         })
         
-        local choice = cutscene:choicer({"Blue", "Pink"})
+        local choice = cutscene:choicer({"Blue", "Pink", "Susie"})
         if choice == 1 then
             cutscene:text("* And I'm blue...[wait:5] Got it.", "nervous_side")
             Game:setFlag("susiecolor", "blue")
-        else
+		elseif choice == 2 then
             cutscene:text("* And I'm pink...[wait:5] Got it.", "nervous_side")
             Game:setFlag("susiecolor", "pink")
+		else
+			cutscene:text("* [face:nervous_side]And I'm Su-[face:teeth][speed:1.22]I didn't mean my name,[wait:5] dumbass![speed:1]", "nervous_side")
+			cutscene:text("* I meant you to tell me what color I am!", "blush")
+			cutscene:text("* [wait:10].[wait:10].[wait:10].", "nervous_side")
+			cutscene:text("* ...[wait:5]so,[wait:5] you gonna tell me what color I am or what?", "suspicious")
+			cutscene:text("* .[wait:5].[wait:5].[wait:5] alright then,[wait:5] I see how it is.", "annoyed_b")
+			Game:setFlag("susiecolor", "susie")
         end
         --uhh i'll commit up to this point dont touch this please :3
         susie:walkTo(susie.x - 40, susie.y, 1)
